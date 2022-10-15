@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700&display=swap');
+
+$color-1:#094067;
+$color-2:#3DA9FC;
+$color-3:#EF4565;
+$color-4:#90B4CE;
+$color-5:#FFFFFE;
+$color-6:#50ff81;
+$color-7:#11101d;
+$color-8:#ff4343;
+$color-9:#0E122D;
+$color-10:#507cff;
+
+$font-1:'Poppins', sans-serif;
+$font-2:'Rubik', sans-serif;
+$font-3:'Nunito', sans-serif;
+
+* {
+  outline: none;
+}	
+
+html {
+  min-height: 100vh;
+}
+
+body {
+  overflow-x: hidden;
+  display: flex;
+  font-family: $font-2;
+  color: $color-7;
+  margin: 0;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+
+
+// Loading animation block
+.hello{
+	display: flex;
+	min-height: 100vh;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1001;
+	width: 100%;
+	background-color: $color-5;
+
+	.hello__container{
+		width: 100%;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		flex-direction: column;	
+	}
+	.hello__block{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	.hello__images{
+		display: flex;
+		justify-content: center;
+
+		.hello__image{
+			padding: 1.5rem;
+
+			& img{
+				width: 15rem;
+			}
+		}
+	}
+}
+
+.loading{
+	margin-top: 5rem;
+	
+	.loading__lines{
+		display: flex;
+		justify-content: center;
+
+		.loading__line{
+			width: .25rem;
+			height: 4rem;
+			border-radius: 10px;
+			background-color: $color-2;
+			transition: all .8s ease;
+
+			&:nth-child(1){
+				height: 2.5rem;
+	
+				&.loading__line_active{
+					animation: 1s linear 0s infinite alternate moveLine1;
+				}
+			}
+	
+			&:nth-child(2){
+				transform: translateY(-1.75rem); 
+				height: 3.5rem;
+	
+				&.loading__line_active{
+					animation: 1s linear 0s infinite alternate moveLine2;
+				}
+			}
+	
+			&:nth-child(3){
+				transform: translateY(-1.5rem); 
+				height: 2.5rem;
+	
+				&.loading__line_active{
+					animation: 1s linear 0s infinite alternate moveLine3;
+				}
+			}
+	
+			&:nth-child(4){
+				transform: translateY(-2.4rem); 
+				height: 3.4rem;
+	
+				&.loading__line_active{
+					animation: 1s linear 0s infinite alternate moveLine4;
+				}
+			}
+	
+			&:nth-child(5){
+				transform: translateY(-1.1rem); 
+				height: 2.9rem;
+	
+				&.loading__line_active{
+					animation: 1s linear 0s infinite alternate moveLine5;
+				}
+			}
+	
+			&:nth-child(6){
+				transform: translateY(-1rem);
+				height: 3.6rem;
+	
+				&.loading__line_active{
+					animation: 1s linear 0s infinite alternate moveLine6;
+				}
+			}
+	
+			&:not(:last-child){
+				margin-right: .4rem;
+			}
+		}
+	}
+
+	.loading__text{
+		font-family: $font-2;
+		font-weight: 500;
+		letter-spacing: 1px;
+		font-size: 1rem;
+		color: $color-1;
+		text-align: center;
+	}
+}
+
+
+
+// Loading animation
+@-webkit-keyframes moveLine1 {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-2rem);
+  }
+}
+
+@keyframes moveLine1 {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-2rem);
+  }
+}
+
+@-webkit-keyframes moveLine2 {
+  from {
+    transform: translateY(-1.75rem);
+  }
+
+  to {
+    transform: translateY(-3.75rem);
+  }
+}
+
+@keyframes moveLine2 {
+  from {
+    transform: translateY(-1.75rem);
+  }
+
+  to {
+    transform: translateY(-3.75rem);
+  }
+}
+
+@-webkit-keyframes moveLine3 {
+  from {
+    transform: translateY(-1.5rem);
+  }
+
+  to {
+    transform: translateY(-3.5rem);
+  }
+}
+
+@keyframes moveLine3 {
+  from {
+    transform: translateY(-1.5rem);
+  }
+
+  to {
+    transform: translateY(-3.5rem);
+  }
+}
+
+@-webkit-keyframes moveLine4 {
+  from {
+    transform: translateY(-2.4rem);
+  }
+
+  to {
+    transform: translateY(-4.4rem);
+  }
+}
+
+@keyframes moveLine4 {
+  from {
+    transform: translateY(-2.4rem);
+  }
+
+  to {
+    transform: translateY(-4.4rem);
+  }
+}
+
+@-webkit-keyframes moveLine5 {
+  from {
+    transform: translateY(-1.1rem);
+  }
+
+  to {
+    transform: translateY(-3.1rem);
+  }
+}
+
+@keyframes moveLine5 {
+  from {
+    transform: translateY(-1.1rem);
+  }
+
+  to {
+    transform: translateY(-3.1rem);
+  }
+}
+
+@-webkit-keyframes moveLine6 {
+  from {
+    transform: translateY(-1rem);
+  }
+
+  to {
+    transform: translateY(-3rem);
+  }
+}
+
+@keyframes moveLine6 {
+  from {
+    transform: translateY(-1rem);
+  }
+
+  to {
+    transform: translateY(-3rem);
+  }
+}

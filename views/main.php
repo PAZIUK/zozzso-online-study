@@ -1,14 +1,14 @@
 		<title><?php echo CONFIG::getTitle()?></title>
 
-		<link rel="stylesheet" href="css/login.css">
+		<link rel="stylesheet" href="css/main.css">
 	</head>
 	<body>
 
 		<section class="login login_active">
 			<div class="login__nav">
-				<form action="nav.php" method="post" class="login__form">
+				<form action="nav.php" method="post" class="login__form" onSubmit="checkPassword(event)">
 					<div class="login__className"></div>
-					<input type="text" class="login__input login__input_active" placeholder="Введіть свій код доступу">
+					<input type="text" class="login__input login__input_active" placeholder="Введіть ваш код доступу" max>
 					<div class="login__error">НЕПРАВИЛЬНИЙ КОД ДОСТУПУ</div>
 					<div class="login__btns">
 						<button class="login__checkPasswordBtn">Продовжити</button>
@@ -25,7 +25,7 @@
 				<div class="hello__block">
 					<div class="hello__images">
 						<div class="hello__image hello__image_logo">
-							<img src="imgZoom/ZOZZSO.png" alt="Logo">
+							<img src="img/config/ZOZZSO.png" alt="Logo">
 						</div>
 					</div>
 				</div>
@@ -47,7 +47,7 @@
 
 
 
-		<script src="js/animation.js"></script>
-		<!-- <script src="js/passwords.js"></script> -->
+		<script src="/projectBlocks/loading/js/loading.js"></script>
+		<script src="/projectBlocks/login/js/login.js"></script>
 	</body>
 </html>
