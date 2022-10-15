@@ -1,0 +1,545 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700&display=swap');
+
+$color-1:#094067;
+$color-2:#3DA9FC;
+$color-3:#EF4565;
+$color-4:#90B4CE;
+$color-5:#FFFFFE;
+$color-6:#50ff81;
+$color-7:#11101d;
+$color-8:#ff4343;
+$color-9:#0E122D;
+$color-10:#507cff;
+
+$font-1:'Poppins', sans-serif;
+$font-2:'Rubik', sans-serif;
+$font-3:'Nunito', sans-serif;
+
+* {
+  outline: none;
+}	
+
+html {
+  min-height: 100vh;
+}
+
+body {
+  overflow-x: hidden;
+  display: flex;
+  font-family: $font-2;
+  color: $color-7;
+  margin: 0;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+// Login Block
+.login {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: all .7s ease;
+  position: relative;
+
+	.login_active{
+		opacity: 1;
+	}
+
+  .login__nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 28rem;
+    padding: 1.5rem;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.1);
+    -webkit-backdrop-filter: blur(15px);
+    -moz-backdrop-filter: blur(15px);
+    -o-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+  }
+
+	.login__form{
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+	}
+
+  .login__className {
+		font-weight: bold;
+		margin-bottom: 1.5rem;
+		font-size: 2rem;
+		font-family: $font-2;
+		background-color: white;
+		z-index: 1002;
+		border-radius: 30px;
+		padding: .5rem 2rem;
+		width: calc(100% - 4rem);
+		text-align: center;
+		transition: all .7s ease;
+		transform: translate(0,-1000%);
+		opacity: 0;
+		display: none;
+
+		&_active{
+			display: unset;
+			transform: translate(0);
+			opacity: 1;
+		}
+  }
+
+	.login__input{
+		padding: .7rem 1rem;
+		text-align: center;
+		font-size: 1.7rem;
+		position: relative;
+		border: none;
+		margin-bottom: 1.5rem;
+		transition: all .7s ease;
+		transform: translate(-100vw,0);
+		border-radius: 30px;
+		z-index: 1002;
+		width: calc( 100% - 2rem);
+		font-family: $font-2;
+		font-weight: bold;
+		background-color: white;	
+		color: $color-9;
+
+		&_active{
+			transform: translate(0);
+		}
+
+		&::placeholder{
+			color: $color-9;
+		}
+	}
+
+	.login__error{
+		font-family: $font-2;
+		color: white;
+		transition: all 1s ease;
+		background-color: $color-8;
+		transform: translate(-100vw,0);
+		z-index: 1002;
+		border-radius: 30px;
+		padding: .75rem .4rem;
+		width: calc(100% - .8rem);
+		text-align: center;
+		font-weight: 500;
+
+		&_active{
+			opacity: 1;
+			transform: translate(0);
+		}
+	}
+
+	.login__btns{
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		margin-top: 1.5rem;
+
+		.login__checkPasswordBtn,
+		.login__helpLink{
+			width: calc(50% - 1rem);
+			border-radius: 30px;
+			padding: 0.5rem .4rem;
+			text-align: center;
+			font-weight: 600;
+			font-size: 1.2rem;
+			font-family: $font-3;
+			position: relative;
+			cursor: pointer;
+			transition: all .7s ease;
+			color: white;
+			text-decoration: none;
+			opacity: .9;
+			z-index: 1002;
+			border: 2px solid $color-10;
+			background-color: $color-10;
+		}
+
+		.login__checkPasswordBtn{
+			background-color: $color-6;
+			border-color: $color-6;
+		}
+
+		.login__checkPasswordBtn:hover,
+		.login__helpLink:hover{
+			transform: scale(1.1);
+		}
+	}
+
+	.login__background{
+		background-size: cover;
+		background-image: url("../imgZoom/background.jpg"); 
+		background-position: 50% 50%;
+		transform: translate3d(0px, 0px, 0px);
+		height: 100vh;
+		width: 100vw;
+		position: fixed;
+		left: 0;
+		top: 0;
+		z-index: -1;
+
+		&_active{
+			-webkit-animation: 55s linear 0s infinite alternate moveBack;
+				 -moz-animation: 55s linear 0s infinite alternate moveBack;
+					 -o-animation: 55s linear 0s infinite alternate moveBack;
+							animation: 55s linear 0s infinite alternate moveBack;
+		}
+	}
+}
+
+// Login Block Media Queries
+@media (max-width:420px) {
+	.login {
+		.login__className {
+			width: calc(100% - 4rem);
+		}
+
+		.login__error{
+			transform: translate(-300vw,0);
+
+			.login__error_active{
+				transform: translate(0);
+			}
+		}
+
+		.login__input::placeholder{
+			font-size: 1.1rem;
+		}
+
+		.login__checkPasswordBtn{
+			padding: .7rem 1rem;
+		}
+	}
+}
+@media (max-width:600px) {
+	.login {
+		.login__btns{
+			flex-direction: column;
+
+			.login__checkPasswordBtn{
+				margin-bottom: 1rem;
+				width: 100%;
+			}
+
+			.login__helpLink{
+				width: calc(100% - 1.2rem);
+			}
+
+			.login__checkPasswordBtn,
+			.login__helpLink{
+				padding: .7rem .4rem;
+				font-size: 1.5rem;
+			}
+		}
+
+		.login__nav{
+			padding: 1rem;
+			width: calc(100% - 4rem);
+			margin: 0 2rem;
+		}
+	}
+}
+
+
+
+// Loading animation block
+.hello{
+	display: flex;
+	min-height: 100vh;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1001;
+	width: 100%;
+	background-color: $color-5;
+
+	.hello__container{
+		width: 100%;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		flex-direction: column;	
+	}
+	.hello__block{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	.hello__images{
+		display: flex;
+		justify-content: center;
+
+		.hello__image{
+			padding: 1.5rem;
+
+			& img{
+				width: 15rem;
+			}
+		}
+	}
+}
+
+.loading{
+	margin-top: 5rem;
+	
+	.loading__lines{
+		display: flex;
+		justify-content: center;
+
+		.loading__line{
+			width: .25rem;
+			height: 4rem;
+			border-radius: 10px;
+			background-color: $color-2;
+			transition: all .8s ease;
+
+			&:nth-child(1){
+				height: 2.5rem;
+	
+				&.loading__line_active{
+					animation: 1s linear 0s infinite alternate moveLine1;
+				}
+			}
+	
+			&:nth-child(2){
+				transform: translateY(-1.75rem); 
+				height: 3.5rem;
+	
+				&.loading__line_active{
+					animation: 1s linear 0s infinite alternate moveLine2;
+				}
+			}
+	
+			&:nth-child(3){
+				transform: translateY(-1.5rem); 
+				height: 2.5rem;
+	
+				&.loading__line_active{
+					animation: 1s linear 0s infinite alternate moveLine3;
+				}
+			}
+	
+			&:nth-child(4){
+				transform: translateY(-2.4rem); 
+				height: 3.4rem;
+	
+				&.loading__line_active{
+					animation: 1s linear 0s infinite alternate moveLine4;
+				}
+			}
+	
+			&:nth-child(5){
+				transform: translateY(-1.1rem); 
+				height: 2.9rem;
+	
+				&.loading__line_active{
+					animation: 1s linear 0s infinite alternate moveLine5;
+				}
+			}
+	
+			&:nth-child(6){
+				transform: translateY(-1rem);
+				height: 3.6rem;
+	
+				&.loading__line_active{
+					animation: 1s linear 0s infinite alternate moveLine6;
+				}
+			}
+	
+			&:not(:last-child){
+				margin-right: .4rem;
+			}
+		}
+	}
+
+	.loading__text{
+		font-family: $font-2;
+		font-weight: 500;
+		letter-spacing: 1px;
+		font-size: 1rem;
+		color: $color-1;
+		text-align: center;
+	}
+}
+
+
+
+// Background Animation
+@-webkit-keyframes moveBack {
+  from {
+    background-position: 20% 50%;
+  }
+
+  to {
+    background-position: 80% 50%;
+  }
+}
+
+@-moz-keyframes moveBack {
+  from {
+    background-position: 20% 50%;
+  }
+
+  to {
+    background-position: 80% 50%;
+  }
+}
+
+@-o-keyframes moveBack {
+  from {
+    background-position: 20% 50%;
+  }
+
+  to {
+    background-position: 80% 50%;
+  }
+}
+
+@keyframes moveBack {
+  from {
+    background-position: 20% 50%;
+  }
+
+  to {
+    background-position: 80% 50%;
+  }
+}
+
+
+
+// Loading animation
+@-webkit-keyframes moveLine1 {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-2rem);
+  }
+}
+
+@keyframes moveLine1 {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-2rem);
+  }
+}
+
+@-webkit-keyframes moveLine2 {
+  from {
+    transform: translateY(-1.75rem);
+  }
+
+  to {
+    transform: translateY(-3.75rem);
+  }
+}
+
+@keyframes moveLine2 {
+  from {
+    transform: translateY(-1.75rem);
+  }
+
+  to {
+    transform: translateY(-3.75rem);
+  }
+}
+
+@-webkit-keyframes moveLine3 {
+  from {
+    transform: translateY(-1.5rem);
+  }
+
+  to {
+    transform: translateY(-3.5rem);
+  }
+}
+
+@keyframes moveLine3 {
+  from {
+    transform: translateY(-1.5rem);
+  }
+
+  to {
+    transform: translateY(-3.5rem);
+  }
+}
+
+@-webkit-keyframes moveLine4 {
+  from {
+    transform: translateY(-2.4rem);
+  }
+
+  to {
+    transform: translateY(-4.4rem);
+  }
+}
+
+@keyframes moveLine4 {
+  from {
+    transform: translateY(-2.4rem);
+  }
+
+  to {
+    transform: translateY(-4.4rem);
+  }
+}
+
+@-webkit-keyframes moveLine5 {
+  from {
+    transform: translateY(-1.1rem);
+  }
+
+  to {
+    transform: translateY(-3.1rem);
+  }
+}
+
+@keyframes moveLine5 {
+  from {
+    transform: translateY(-1.1rem);
+  }
+
+  to {
+    transform: translateY(-3.1rem);
+  }
+}
+
+@-webkit-keyframes moveLine6 {
+  from {
+    transform: translateY(-1rem);
+  }
+
+  to {
+    transform: translateY(-3rem);
+  }
+}
+
+@keyframes moveLine6 {
+  from {
+    transform: translateY(-1rem);
+  }
+
+  to {
+    transform: translateY(-3rem);
+  }
+}
