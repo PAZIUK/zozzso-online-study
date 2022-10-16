@@ -6,9 +6,9 @@
 
 		<section class="login login_active">
 			<div class="login__nav">
-				<form action="nav.php" method="post" class="login__form" onSubmit="checkPassword(event)">
+				<form action="class.php" method="post" class="login__form" onSubmit="checkPassword(event)">
 					<div class="login__className"></div>
-					<input type="text" class="login__input login__input_active" placeholder="Введіть ваш код доступу" max>
+					<input type="text" class="login__input login__input_active" placeholder="Введіть ваш код доступу" name="code">
 					<div class="login__error">НЕПРАВИЛЬНИЙ КОД ДОСТУПУ</div>
 					<div class="login__btns">
 						<button class="login__checkPasswordBtn">Продовжити</button>
@@ -49,5 +49,6 @@
 
 		<script src="/projectBlocks/loading/js/loading.js"></script>
 		<script src="/projectBlocks/login/js/login.js"></script>
+
 	</body>
 </html>
