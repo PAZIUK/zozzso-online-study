@@ -1,0 +1,2 @@
+.returnBack{position:absolute;top:1rem;left:1rem;padding:0.3rem 1rem 0.4rem;border-radius:10px;-webkit-box-align:center;-ms-flex-align:center;align-items:center;cursor:pointer;display:none;-webkit-transition:all 0.7s ease;transition:all 0.7s ease;font-size:1.5rem;background-color:white;color:rgb(14,18,45);z-index:-1}.returnBack.returnBack_active{display:-webkit-box;display:-ms-flexbox;display:flex;z-index:1004}.returnBack .returnBack__img{width:2rem}
+/*# sourceMappingURL=returnBack.css.map */

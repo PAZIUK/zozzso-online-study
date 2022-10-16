@@ -4,6 +4,7 @@
     require_once("models/database.php");
     require_once("models/config.php");  
     require_once("models/redirect.php");
+    require_once("models/schedule.php");
 
     require_once("layout/head.php");
 

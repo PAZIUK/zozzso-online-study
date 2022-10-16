@@ -1,0 +1,8 @@
+/* Import schedule page styles */
+@import "/projectBlocks/schedule/css/schedule.css";
+
+/* Import return back button styles */
+@import "/projectBlocks/returnBack/css/returnBack.css";
+
+/* Import background styles */
+@import "/projectBlocks/background/css/background.css";

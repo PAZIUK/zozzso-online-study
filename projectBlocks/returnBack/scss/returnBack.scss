@@ -1,0 +1,23 @@
+.returnBack{
+	position: absolute;
+	top: 1rem;
+	left: 1rem;
+	padding: .3rem 1rem .4rem;
+	border-radius: 10px;
+	align-items: center;
+	cursor: pointer;
+	display: none;
+	transition: all .7s ease;
+	font-size: 1.5rem;
+	background-color: white;
+	color: rgba(14,18,45,1);
+	z-index: -1;
+
+	&.returnBack_active{
+		display: flex;
+		z-index: 1004;
+	}
+	.returnBack__img{
+		width: 2rem;
+	}
+}

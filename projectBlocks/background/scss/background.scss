@@ -1,0 +1,62 @@
+.background{
+	background-size: cover;
+	background-image: url("/img/config/background-min.jpg"); 
+	background-position: 50% 50%;
+	transform: translate3d(0px, 0px, 0px);
+	height: 100vh;
+	width: 100vw;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: -1;
+
+	&_active{
+		-webkit-animation: 55s linear 0s infinite alternate moveBack;
+			 -moz-animation: 55s linear 0s infinite alternate moveBack;
+				 -o-animation: 55s linear 0s infinite alternate moveBack;
+						animation: 55s linear 0s infinite alternate moveBack;
+	}
+}
+
+
+
+// Background Animation
+@-webkit-keyframes moveBack {
+  from {
+    background-position: 20% 50%;
+  }
+
+  to {
+    background-position: 80% 50%;
+  }
+}
+
+@-moz-keyframes moveBack {
+  from {
+    background-position: 20% 50%;
+  }
+
+  to {
+    background-position: 80% 50%;
+  }
+}
+
+@-o-keyframes moveBack {
+  from {
+    background-position: 20% 50%;
+  }
+
+  to {
+    background-position: 80% 50%;
+  }
+}
+
+@keyframes moveBack {
+  from {
+    background-position: 20% 50%;
+  }
+
+  to {
+    background-position: 80% 50%;
+  }
+}

@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap');
+
+$font-1: 'Rubik', sans-serif;
+
+body {
+	overflow-x: hidden;
+	display: flex;
+  justify-content: center;
+	align-items: center;
+	font-family: 'Poppins', sans-serif;
+	color: #11101d;
+	margin: 0; 
+  min-height: 100vh;
+	box-sizing: border-box;
+}
+
+.telegram {
+	display: flex;
+	max-width: 50rem;
+	margin: 2rem 0;
+	padding: .5rem 1.5rem .5rem .5rem;
+	border-radius: 20px;
+	background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+	backdrop-filter: blur(10px);
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	box-shadow: 0 8px 32px 0 rgb(0 0 0 / 37%);
+
+  .telegram__info{
+    font-family: $font-1;	
+    font-weight: 400;
+    background-color: #293462;
+    border-radius: 20px;
+    padding: 0 1rem;
+    color: #EEEEEE;
+  }
+
+  .telegram__desc{
+    font-size: 1.15rem;
+  }
+  
+  .telegram__rule{
+    text-align: justify;
+    margin-top: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  
+  .telegram__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2rem;
+
+    .telegram__img{
+      width: 10rem;
+    }
+  }
+}
+
+// Telegram bot page media queries
+@media (max-width:850px) {
+	.telegram {
+		display: block;
+		margin: 4.5rem 1rem 1rem;
+
+    .telegram__info{
+      padding: 0.1rem 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .telegram__title{
+      text-align: center;
+    }
+	}
+}

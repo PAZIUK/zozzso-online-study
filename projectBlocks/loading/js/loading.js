@@ -16,7 +16,7 @@ if(loadingLines){
 
 const loading = document.querySelector(".hello")
 if(loading){
-    document.querySelector(".login__background").classList.add("login__background_active")
+    document.querySelector(".background").classList.add("background_active")
     setTimeout(()=>{
         let i = 100
         let int = setInterval(()=>{
