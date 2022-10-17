@@ -6,11 +6,12 @@ A website was created for online study. <br/>
 
 The website was created by Serhiy Paziuk and upgraded by Bohdan Grihorak (https://github.com/Grihorak-Bogdan) and Dionisiy Shtefanitsa.<br/>
 
-### Website : https://zozzso-online-study.pp.ua  <br/>
+### Website : https://zozzso-online-study.pp.ua <br/>
 
 ## For creating were used <br/>
 
 ![HTML5](https://img.shields.io/badge/-HTML5-ffffff?style=for-the-badge&logo=html5)
+![BEM](https://img.shields.io/badge/-BEM-052534?style=for-the-badge&logo=bem)
 ![CSS3](https://img.shields.io/badge/-CSS3-264de4?style=for-the-badge&logo=css3)
 ![SCSS](https://img.shields.io/badge/-SASS/SCSS-264de4?style=for-the-badge&logo=sass)
 ![JavaScript](https://img.shields.io/badge/-JavaScript-ffffff?style=for-the-badge&logo=javascript)
