@@ -4,7 +4,7 @@
     </head>
     <body>
 
-        <a class="returnBack returnBack_active" href="/">
+        <a class="returnBack returnBack_active" href="/help">
             <img src="/img/config/arrow-left.png" class="returnBack__img">
         </a>
 

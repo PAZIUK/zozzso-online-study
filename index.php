@@ -5,6 +5,7 @@
     require_once("models/config.php");  
     require_once("models/redirect.php");
     require_once("models/schedule.php");
+    require_once("models/codes.php");
 
     require_once("layout/head.php");
 
@@ -12,11 +13,11 @@
         $a = $_GET["action"];
         if (file_exists("views/".$a.".php")) {
             require_once("views/".$a.".php");
-        }	else {
-            REDIRECT::toUserHome();
+        } else {
+            REDIRECT::toErrorPage();
         }
-    }
-    else {
+    } else {
+        unset($_GET);
         require_once("views/main.php");
     }
 ?>

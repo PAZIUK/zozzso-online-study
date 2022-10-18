@@ -1,0 +1,13 @@
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+ 
+RewriteRule ^/?404$ index.php?action=404 [L,NC] 
+
+RewriteRule ^/?admin$ index.php?action=admin [L,NC] 
+
+RewriteRule ^/?help$ index.php?action=help [L,NC] 
+RewriteRule ^/?rules$ index.php?action=rules [L,NC]
+RewriteRule ^/?schedule$ index.php?action=schedule [L,NC]
+RewriteRule ^/?telegramBot$ index.php?action=telegramBot [L,NC]
