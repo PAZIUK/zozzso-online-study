@@ -23,7 +23,11 @@
 			$stmt = $mysqli->prepare($sql);
       $stmt->bind_param("i", $code);
 			$stmt->execute();
-			return $stmt->get_result()->fetch_all(MYSQLI_ASSOC)[0]["Roles_Role"] == "Admin";
+			$result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+			if(count($result)>0){
+				return ($result[0]["Roles_Role"] == "Admin");
+			}
+			return false;
 		}
 	}
 ?>
