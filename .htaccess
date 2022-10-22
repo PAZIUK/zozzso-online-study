@@ -11,3 +11,5 @@ RewriteRule ^/?help$ index.php?action=help [L,NC]
 RewriteRule ^/?rules$ index.php?action=rules [L,NC]
 RewriteRule ^/?schedule$ index.php?action=schedule [L,NC]
 RewriteRule ^/?telegramBot$ index.php?action=telegramBot [L,NC]
+
+ErrorDocument 404 /404

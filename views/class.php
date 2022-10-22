@@ -15,90 +15,104 @@
 ?>
       <title><?php echo CONFIG::getTitle()?> - <?php echo CODES::getNameByCode($_GET["code"])?></title>
 
-      <link rel="stylesheet" href="../../css/nav.css">
-      <link rel="stylesheet" href="../../css/class.css">
+      <link rel="stylesheet" href="/css/class.css">
     </head>
   <body>
-  <a href=<?php echo "index.php?action=class&code=".$_GET["code"]."&view=day&day=1" ?>>First</a>
-    <div class="days">
-      <button id="day1">ПОНЕДІЛОК</button>
-      <button id="day2">ВІВТОРОК</button>
-      <button id="day3">СЕРЕДА</button>
-      <button id="day4">ЧЕТВЕР</button>
-      <button id="day5">П'ЯТНИЦЯ</button>
-    </div>
+
+  <?php if(isset($_GET["view"])&&$_GET["view"]=="navigation"){ ?> 
+
+    <a class="returnBack returnBack_active" href="/">
+			<img src="/img/config/arrow-left.png" class="returnBack__img">
+		</a>
+
+    <section class="daysButtons">
+      <a class="daysButtons__link" href="index.php?action=class&code=<?php echo $_GET["code"]?>&view=day&day=1">ПОНЕДІЛОК</a>
+      <a class="daysButtons__link" href="index.php?action=class&code=<?php echo $_GET["code"]?>&view=day&day=2">ВІВТОРОК</a>
+      <a class="daysButtons__link" href="index.php?action=class&code=<?php echo $_GET["code"]?>&view=day&day=3">СЕРЕДА</a>
+      <a class="daysButtons__link" href="index.php?action=class&code=<?php echo $_GET["code"]?>&view=day&day=4">ЧЕТВЕР</a>
+      <a class="daysButtons__link" href="index.php?action=class&code=<?php echo $_GET["code"]?>&view=day&day=5">П'ЯТНИЦЯ</a>
+    </section>
     
     <div class="time">
-      <div class="whatDay"></div>
-      <div class="whatTime"><p class="h"></p>:<p class="m"></p>:<p class="s"></p></div> 
+      <div class="time__whatDay">День</div>
+      <div class="time__whatTime"><p class="h">00</p>:<p class="m">00</p>:<p class="s">00</p></div> 
     </div>
 
+    <div class="background background_active"></div>
+
+    <script src="/projectBlocks/class/js/navigation.js"></script>
+
+  <?php } else if(isset($_GET["view"])&&$_GET["view"]=="day"){ ?>
+
     <header class="classInfo">
-      <div class="name"></div>
-      <img src="https://img.icons8.com/ios-filled/50/000000/long-arrow-left.png"/>    
+      <div class="classInfo__name"><?php echo CONFIG::getDayName(intval($_GET["day"]))?></div>
+      <a href="index.php?action=class&code=<?php echo $_GET["code"]?>&view=navigation"><img class="classInfo__img" src="/img/config/arrow-left.png" alt="Назад"/></a>    
     </header>
 
-    <section class="btns day1">
+    <section class="dayButtons">
 
-      <div class="lesson" lessonName="УКРАЇНСЬКА МОВА"                            teachers="14"></div>
-      <div class="lesson" lessonName="УКРАЇНСЬКА ЛІТЕРАТУРА"                      teachers="14"></div>
-      <div class="lesson" lessonName="МАТЕМАТИКА"                                 teachers="29"></div>
-      <div class="lesson" lessonName="ФІЗИЧНА КУЛЬТУРА"                           teachers="7"></div>
-      <div class="lesson" lessonName="АНГЛІЙСЬКА МОВА"                            teachers="20"></div>
-      <div class="lesson" lessonName="ФІНАНСОВО ГРАМОТНИЙ СПОЖИВАЧ"               teachers="22"></div>
+      <?php 
+        $lessonsInfo = LESSONS::getLessonsViaCodeAndDay($_GET["code"],$_GET["day"]);
+        for ($i=0; $i < count($lessonsInfo[0]); $i++) { 
+          $lessonName = "";
+          $lessonIDs = explode(",",$lessonsInfo[0][$i]["ScheduleLessons_LessonID"]);
+          for ($ind=0; $ind < count($lessonIDs); $ind++) {
+            for ($index=0; $index < count($lessonsInfo[2]); $index++) { 
+              if($lessonsInfo[2][$index]["Lessons_ID"]==intval($lessonIDs[$ind])){
+                if($ind>0){
+                  $lessonName .= " / ".$lessonsInfo[2][$index]["Lessons_Name"];
+                } else {
+                  $lessonName .= $lessonsInfo[2][$index]["Lessons_Name"];
+                }
+              }
+            }
+          }
+          ?>
+          <div class="dayButtons__lesson lesson" myheight="53">
+            <div class="lesson__btnBlock">
+              <button class="lesson__btn">
+                <div class="lesson__name"><?php echo $lessonName?></div>
+                <div class="lesson__number"><?php echo $lessonsInfo[0][$i]["ScheduleLessons_LessonNumber"]?>.</div>
+                <img class="lesson__img" src="/img/config/plus.png" alt=""/>
+              </button>
+            </div>
+            <div class="lesson__teachers teachers">
+            <?php 
+              $teachers = explode(",",$lessonsInfo[0][$i]["ScheduleLessons_TeacherID"]);
+              $teacherName = "";
+              $teacherLink = "";
+              for ($I=0; $I < count($teachers); $I++) { 
+                for ($ind=0; $ind < count($lessonsInfo[1]); $ind++) {
+                  for ($index=0; $index < count($lessonsInfo[1]); $index++) { 
+                    if($teachers[$I]==$lessonsInfo[1][$index]["Teachers_ID"]){
+                      $teacherName = $lessonsInfo[1][$index]["Teachers_Name"];
+                      $teacherLink = $lessonsInfo[1][$index]["Teachers_Link"];
+                    }
+                  }
+                }
+                ?>
+                <div class="teachers__teacher teacher">
+                  <div class="teacher__info">
+                    <div class="teacher__desc"><?php echo $teacherName?></div>
+                  </div>
+                  <button class="teacher__button button button_link" link="<?php echo $teacherLink?>">Перейти в ZOOM</button>
+                </div>
+              <?php 
+              } 
+            ?>
+            </div>
+          </div>
+          <?php
+        }
+      ?>
 
     </section>
 
-    <section class="btns day2">
-      
-      <div class="lesson" lessonName="ІСТОРІЯ УКРАЇНИ"                            teachers="38"></div>
-      <div class="lesson" lessonName="УКРАЇНСЬКА МОВА"                            teachers="14"></div>
-      <div class="lesson" lessonName="ЗАРУБІЖНА ЛІТЕРАТУРА"                       teachers="17"></div>
-      <div class="lesson" lessonName="ГЕОГРАФІЯ"                                  teachers="18"></div>
-      <div class="lesson" lessonName="АНГЛІЙСЬКА МОВА"                            teachers="20"></div>
-      <div class="lesson" lessonName="ІНФОРМАТИКА"                                teachers="8"></div>
-      <div class="lesson" lessonName="НІМЕЦЬКА МОВА"                              teachers="21"></div>
+    <div class="background"></div>
 
-    </section>
+    <script src="/projectBlocks/class/js/day.js"></script>
 
-    <section class="btns day3">
-
-      <div class="lesson" lessonName="МУЗИЧНЕ МИСТЕЦТВО"                          teachers="11"></div>
-      <div class="lesson" lessonName="УКРАЇНСЬКА МОВА"                            teachers="14"></div>
-      <div class="lesson" lessonName="ОСНОВИ ЗДОРОВ'Я"                            teachers="26"></div>
-      <div class="lesson" lessonName="БІОЛОГІЯ"                                   teachers="24"></div>
-      <div class="lesson" lessonName="МАТЕМАТИКА"                                 teachers="29"></div>
-      <div class="lesson" lessonName="ФІЗИЧНА КУЛЬТУРА"                           teachers="7"></div>
-      <div class="lesson" lessonName="ОБРАЗОТВОРЧЕ МИСТЕЦТВО"                     teachers="5"></div>
-
-    </section>
-
-    <section class="btns day4">
-
-      <div class="lesson" lessonName="ГЕОГРАФІЯ"                                  teachers="18"></div>
-      <div class="lesson" lessonName="МАТЕМАТИКА"                                 teachers="29"></div>
-      <div class="lesson" lessonName="ФІЗИЧНА КУЛЬТУРА"                           teachers="7"></div>
-      <div class="lesson" lessonName="ВСЕСВІТНЯ ІСТОРІЯ"                          teachers="38"></div>
-      <div class="lesson" lessonName="УКРАЇНСЬКА МОВА"                            teachers="14"></div>
-      <div class="lesson" lessonName="УКРАЇНСЬКА ЛІТЕРАТУРА"                      teachers="14"></div>
-      <div class="lesson" lessonName="НІМЕЦЬКА МОВА / ОСНОВИ ХРИСТИЯНСЬКОЇ ЕТИКИ" teachers="21,31"></div>
-
-    </section>
-
-    <section class="btns day5">
-
-      <div class="lesson" lessonName="БІОЛОГІЯ"                                   teachers="24"></div>
-      <div class="lesson" lessonName="АНГЛІЙСЬКА МОВА"                            teachers="20"></div>
-      <div class="lesson" lessonName="ТРУДОВЕ НАВЧАННЯ"                           teachers="36,30"></div>
-      <div class="lesson" lessonName="ТРУДОВЕ НАВЧАННЯ"                           teachers="36,30"></div>
-      <div class="lesson" lessonName="МАТЕМАТИКА"                                 teachers="29"></div>
-      <div class="lesson" lessonName="ЗАРУБІЖНА ЛІТЕРАТУРА"                       teachers="17"></div>
-
-    </section>
-
-    <script src="../../js/nav.js" async></script>
-    <script src="../../js/teachers.js"></script>
-    <script type="module" src="../../js/class.js"></script>
+    <?php } ?>
 
   </body>
 </html>

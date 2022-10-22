@@ -1,0 +1,5 @@
+/* Import reset styles */
+@import "/css/reset.css";
+
+/* Import admin page styles */
+@import "/projectBlocks/admin/css/admin.css";

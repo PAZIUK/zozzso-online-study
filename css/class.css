@@ -1,0 +1,11 @@
+/* Import reset styles */
+@import "/css/reset.css";
+
+/* Import class page styles */
+@import "/projectBlocks/class/css/class.css";
+
+/* Import return back button styles */
+@import "/projectBlocks/returnBack/css/returnBack.css";
+
+/* Import background styles */
+@import "/projectBlocks/background/css/background.css";

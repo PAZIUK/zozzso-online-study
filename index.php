@@ -6,6 +6,7 @@
     require_once("models/redirect.php");
     require_once("models/schedule.php");
     require_once("models/codes.php");
+    require_once("models/lessons.php");
 
     require_once("layout/head.php");
 
@@ -17,7 +18,6 @@
             REDIRECT::toErrorPage();
         }
     } else {
-        unset($_GET);
         require_once("views/main.php");
     }
 ?>

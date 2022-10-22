@@ -20,45 +20,6 @@ body{
 	box-sizing: border-box;
 	flex-direction: column;
 }
-.time{
-	position: fixed;
-	background-color: #140d23;
-	color: white;
-	bottom: 0;
-	transform: translate(0,100%);
-	opacity: 0;
-	border-radius: 20px 20px 0 0;
-	display: flex;
-	justify-content: center;
-	font-weight: bold;
-	font-size: 2rem;
-	padding: .5rem 1rem;
-	width: 25rem;
-	text-align: center;
-  	font-family: 'Rubik', sans-serif;
-	transition: all .7s ease;
-  	letter-spacing: .5px;
-}
-.time.active{
-	opacity: 1;
-	transform: translate(0);
-}
-.time.noactive{
-	display: none;
-}
-.time .whatDay{
-	margin-right: 3rem;
-}
-.time .whatTime{
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-.time .whatTime p{
-	margin: 0;
-	width: 3rem;
-	text-align: center;
-}
 .classInfo{
 	padding: .5rem;
 	background-color: white;

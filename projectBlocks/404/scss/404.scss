@@ -8,7 +8,7 @@ $font-1: 'Space Mono', monospace;
 }
 
 body {
-	background-color: #507CFF;
+	background-image: linear-gradient(135deg, #ff7248 0, #ff5f50 16.67%, #ff4c55 33.33%, #ff3858 50%, #e92359 66.67%, #d40d5a 83.33%, #c1005c 100%);
 	color: white;
 	font-family: $font-1;
 	min-height: 100vh;
