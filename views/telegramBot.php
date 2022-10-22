@@ -1,11 +1,11 @@
 
 		<title><?php echo CONFIG::getTitle()?> - Telegram Bot</title>
 
-		<link rel="stylesheet" href="css/telegramBot.css">
+		<link rel="stylesheet" href="/css/telegramBot.css">
 	</head>
 	<body>
 
-		<a class="returnBack returnBack_active" href="/help">
+		<a class="returnBack returnBack_active" href="/view/help">
 			<img src="/img/config/arrow-left.png" class="returnBack__img">
 		</a>
 

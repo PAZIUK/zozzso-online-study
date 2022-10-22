@@ -1,19 +1,19 @@
 		<title><?php echo CONFIG::getTitle()?></title>
 
-		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="/css/main.css">
 
 	</head>
 	<body>
 
 		<section class="login login_active">
 			<div class="login__nav">
-				<form action="index.php?action=class" method="POST" class="login__form" onSubmit="checkPassword(event)">
+				<form action="/view/class" method="POST" class="login__form" onSubmit="checkPassword(event)">
 					<div class="login__className"></div>
 					<input type="text" class="login__input login__input_active" placeholder="Введіть ваш код доступу" name="code">
 					<div class="login__error">НЕПРАВИЛЬНИЙ КОД ДОСТУПУ</div>
 					<div class="login__btns">
 						<button class="login__checkPasswordBtn">Продовжити</button>
-						<a class="login__helpLink" href="/help">Допомога</a>
+						<a class="login__helpLink" href="/view/help">Допомога</a>
 					</div>
 				</form>
 			</div>

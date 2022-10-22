@@ -1,10 +1,10 @@
 		<title><?php echo CONFIG::getTitle()?> - Розклад Дзвінків</title>
 
-		<link rel="stylesheet" href="css/schedule.css">
+		<link rel="stylesheet" href="/css/schedule.css">
 	</head>
 	<body>
 
-		<a class="returnBack returnBack_active" href="/help">
+		<a class="returnBack returnBack_active" href="/view/help">
 			<img src="/img/config/arrow-left.png" class="returnBack__img">
 		</a>
 

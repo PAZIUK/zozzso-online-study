@@ -1,10 +1,10 @@
     <title><?php echo CONFIG::getTitle()?> - Правила Поведінки</title>
 
-    <link rel="stylesheet" href="css/rules.css">
+    <link rel="stylesheet" href="/css/rules.css">
     </head>
     <body>
 
-        <a class="returnBack returnBack_active" href="/help">
+        <a class="returnBack returnBack_active" href="/view/help">
             <img src="/img/config/arrow-left.png" class="returnBack__img">
         </a>
 

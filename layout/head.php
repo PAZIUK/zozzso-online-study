@@ -4,11 +4,11 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no">
 
-		<link rel="apple-touch-icon" sizes="76x76" href="img/favicons/apple-touch-icon.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="img/favicons/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="img/favicons/favicon-16x16.png">
-		<link rel="manifest" href="img/favicons/site.webmanifest">
-		<link rel="mask-icon" href="img/favicons/safari-pinned-tab.svg" color="#00c7ff">
+		<link rel="apple-touch-icon" sizes="76x76" href="/img/favicons/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/img/favicons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/img/favicons/favicon-16x16.png">
+		<link rel="manifest" href="/img/favicons/site.webmanifest">
+		<link rel="mask-icon" href="/img/favicons/safari-pinned-tab.svg" color="#00c7ff">
 		<meta name="msapplication-TileColor" content="#ffffff">
 		<meta name="theme-color" content="#ffffff">
 

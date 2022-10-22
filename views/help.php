@@ -1,6 +1,6 @@
 		<title><?php echo CONFIG::getTitle()?> - Допомога</title>
 
-		<link rel="stylesheet" href="css/help.css">
+		<link rel="stylesheet" href="/css/help.css">
 	</head>
 	<body>
 
@@ -10,21 +10,21 @@
 
 		<section class="help">
 			<div class="help__block block"> 
-				<a href="/rules" class="block__link">
+				<a href="/view/rules" class="block__link">
 					<img src="/img/help/book.png" alt="Rules" class="block__img">
 					<h2 class="block__text">Правила поведінки</h2>
 				</a>
 			</div>
 			
 			<div class="help__block block">
-				<a href="/schedule" class="block__link">
+				<a href="/view/schedule" class="block__link">
 					<img src="/img/help/bell.png" alt="Bell" class="block__img">
 					<h2 class="block__text">Розклад дзвінків</h2>
 				</a>
 			</div>
 			
 			<div class="help__block block">
-				<a href="/telegramBot" class="block__link">
+				<a href="/view/telegramBot" class="block__link">
 					<img src="/img/help/telegram.png" alt="Telegram" class="block__img">
 					<h2 class="block__text">Telegram - допомога</h2>
 				</a>
