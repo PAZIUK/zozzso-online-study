@@ -2,10 +2,12 @@
 	class LESSONS
 	{
 		public static function getLessonsViaCodeAndDay($code,$day){
+			$classID = CODES::getClassIDViaCode($code);
+
 			$mysqli = DATABASE::Connect();
-			$sql = "SELECT `ScheduleLessons_LessonNumber`,`ScheduleLessons_TeacherID`,`ScheduleLessons_LessonID` FROM `zozzso-online-study_schedulelessons` WHERE `ScheduleLessons_ClassCode` = ? AND `ScheduleLessons_Day` = ? ORDER BY `ScheduleLessons_LessonNumber` ASC";
+			$sql = "SELECT `ScheduleLessons_LessonNumber`,`ScheduleLessons_TeacherID`,`ScheduleLessons_LessonID` FROM `zozzso-online-study_schedulelessons` WHERE `ScheduleLessons_ClassID` = ? AND `ScheduleLessons_Day` = ? ORDER BY `ScheduleLessons_LessonNumber` ASC";
 			$stmt = $mysqli->prepare($sql);
-      $stmt->bind_param("ii", $code,$day);
+      $stmt->bind_param("ii", $classID,$day);
 			$stmt->execute();
 			$result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 

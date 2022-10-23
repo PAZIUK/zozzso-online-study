@@ -4,13 +4,16 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no">
 
-		<link rel="apple-touch-icon" sizes="76x76" href="/img/favicons/apple-touch-icon.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="/img/favicons/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/img/favicons/favicon-16x16.png">
-		<link rel="manifest" href="/img/favicons/site.webmanifest">
-		<link rel="mask-icon" href="/img/favicons/safari-pinned-tab.svg" color="#00c7ff">
-		<meta name="msapplication-TileColor" content="#ffffff">
-		<meta name="theme-color" content="#ffffff">
+		<link rel="apple-touch-icon" sizes="180x180" href="/img/favicons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/img/favicons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="194x194" href="/img/favicons/favicon-194x194.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="/img/favicons/android-chrome-192x192.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/img/favicons/favicon-16x16.png">
+        <link rel="manifest" href="/img/favicons/site.webmanifest">
+        <link rel="mask-icon" href="/img/favicons/safari-pinned-tab.svg" color="#000316">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="/img/favicons/mstile-144x144.png">
+        <meta name="theme-color" content="#ffffff">
 
         <!-- SEO -->
         <!-- Description of site - max 135 symbols -->

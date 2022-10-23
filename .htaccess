@@ -12,6 +12,9 @@ RewriteRule ^view/([0-9a-zA-Z_-]+)/([0-9]+)/([a-zA-Z]+)/ index.php?action=$1&cod
 RewriteRule ^view/([0-9a-zA-Z_-]+)/([0-9]+) index.php?action=$1&code=$2 [NC,L]
 RewriteRule ^view/([0-9a-zA-Z_-]+)/([0-9]+)/ index.php?action=$1&code=$2 [NC,L]
 
+RewriteRule ^view/admin/([a-zA-Z]+) index.php?action=admin&view=$1 [NC,L]
+RewriteRule ^view/admin/([a-zA-Z]+)/ index.php?action=admin&view=$1 [NC,L]
+
 RewriteRule ^view/([0-9a-zA-Z_-]+) index.php?action=$1 [NC,L]
 RewriteRule ^view/([0-9a-zA-Z_-]+)/ index.php?action=$1 [NC,L]
 
