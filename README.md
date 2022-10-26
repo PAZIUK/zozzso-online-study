@@ -6,7 +6,7 @@ A website was created for online study. <br/>
 
 The website was created by Serhiy Paziuk and upgraded by Bohdan Grihorak (https://github.com/Grihorak-Bogdan) and Dionisiy Shtefanitsa.<br/>
 
-### Website : https://zozzso.atwebpages.com/ <br/>
+### Website : https://zozzso.atwebpages.com <br/>
 
 ## For creating were used <br/>
 
