@@ -2,6 +2,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;700;900&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700;900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico:wght@400&display=swap');
+
 $subColor:#a989fc;
 
 $color-1: #7e4dfd;
@@ -10,28 +14,19 @@ $color-3: #6939ed;
 $color-4: #f1f5f9;
 $color-5: #e8da39;
 $color-6: #5b2ee6;
+$color-7: #ffa700;
+$color-8: #797979;
+$color-9: #00ff00;
 
 $font-1: 'Nunito', sans-serif;
 $font-2: 'Comfortaa', cursive;
+$font-3: 'Oswald', sans-serif;
+$font-4: 'Pacifico', cursive;
 
 body{
   display: flex;
   min-height: 100vh;
   background-color: $color-2;
-
-  &::-webkit-scrollbar {
-    width: 1rem;
-  }
-
-  &::-webkit-scrollbar-track {
-    background-color: $color-6;
-  }
-   
-  &::-webkit-scrollbar-thumb {
-    background-color: $color-5;
-    border-radius: 30px;
-    border: .25rem solid $color-6;
-  }
 }
 
 .leftMenu {
@@ -224,15 +219,34 @@ body{
       }
     }
   }
+
+  &_scroll{
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+  }
 }
 
 .main{
   width: calc(100% - 3rem);
   margin-left: 3rem;
   font-family: $font-1;
+  display: flex;
+  flex-direction: column;
+  
+  .wrapper{
+    max-width: 1920px;
+    margin-right: auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 1rem;
+  }
 
   .header{
-    padding-left: 3rem;
     background-color: $color-4;
     box-shadow: 0px 100px 100px -5px rgba(214, 214, 214, 1);
 
@@ -243,6 +257,263 @@ body{
       font-size: 1.8rem;
       padding: 1.5rem 1rem;
       font-weight: 800;
+    }
+  }
+
+  .mainBlock{
+    flex: 1 1 auto;
+
+    .section{
+      display: none;
+      padding: 1rem;
+      
+      .infoBlock{
+        display: flex;
+        flex: 2;
+        justify-content: center;
+
+        &__wrapper{
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        &__subtitle{
+          color: $color-7;
+          font-size: 1.3rem;
+          font-family: $font-4;
+        } 
+
+        &__title{
+          margin-top: 1.5rem;
+          font-size: 6rem;
+          font-family: $font-3;
+          font-weight: 600;
+        } 
+
+        &__desc{
+          margin: 1.5rem 0 2rem;
+          line-height: 1.8rem;
+          font-size: 1.2rem;
+          font-weight: 600;
+          color: $color-8;
+          font-family: $font-2;
+          display: flex;
+          align-items: center;
+
+          .desc__image{
+            width: 3rem;
+            margin-right: 1rem;
+            display: flex;
+            align-items: center;
+            height: 100%;
+          }
+        }
+
+        &__buttonOpenLeftMenu{
+          margin: 2rem 0 0 auto;
+          padding: 1rem 1.5rem;
+          cursor: pointer;
+          font-size: 1.2rem;
+          background-color: $color-5;
+          border: none;
+          font-family: $font-2;
+          font-weight: 600;
+          transition: all .7s ease;
+          position: relative;
+          overflow: hidden;
+
+          &::after,
+          &::before{
+            content:"";
+            position: absolute;
+            height: .2rem;
+            width: 100%;
+            background-color: $color-5;
+            transition: all .7s ease;
+          }
+
+          &::before{
+            right: -100%;
+            top: 0;
+          }
+
+          &::after{
+            bottom: 0;
+            left: -100%;
+          }
+
+          &:hover{
+            transform: translate(0,-.2rem);
+            background-color: black;
+            color: $color-5;
+
+            &::before{
+              right: 100%;
+            }
+  
+            &::after{
+              left: 100%;
+            }
+          }
+        }
+
+        .settings{
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+
+          .setting{
+            display: flex;
+            flex: 1 1 auto;
+            background-color: white;
+            padding: .5rem 1rem;
+            border-radius: 10px;
+
+            &__imageBlock{
+              margin-right: 1rem;
+              display: flex;
+              align-items: center;
+
+              .setting__image{
+                width: 2rem;
+              }
+            }
+
+            &__title{
+              font-size: 1.5rem;
+              font-family: $font-2;
+              flex: 1 1 auto;
+              display: flex;
+              align-items: center;
+            }
+
+            &__changeBlock{
+              width: 50%;
+              min-width: 50%;
+              display: flex;
+            }
+
+            &__input{
+              flex: 1 1 auto;
+              border-radius: 10px;
+              padding: .8rem;
+              font-family: $font-1;
+              font-weight: 600;
+              border: none;
+              background-color: $color-4;
+              text-align: center;
+              font-size: 1.2rem;
+
+              &_teacher{
+                margin-right: 1.5rem;
+              }
+            }
+
+            textarea.setting__input{
+              height: 15rem;
+              resize: none;
+              text-align: unset;
+            }
+
+            &__buttons{
+              width: 100%;
+              display: flex;
+              justify-content: space-around;
+
+              .setting__submitBtn{
+                background-color: $color-9;
+                color: white;
+              }
+              .setting__addBtn{
+                background-color: white;
+                color: black;
+                transition: all .7s ease;
+
+                .btnImage{
+                  width: 1.2rem;
+                  margin-right: .5rem;
+                }
+
+                &_active{
+                  .btnImage{
+                    transform: rotate(45deg);
+                  }
+                }
+              }
+
+              .button{
+                cursor: pointer;
+                transition: all .7s ease;
+                font-family: $font-2;
+                font-weight: 500;
+                padding: .8rem 1rem;
+                font-size: 1.2rem;
+                border-radius: 10px;
+                border: none;
+                display: flex;
+                align-items: center;
+
+                &:hover{
+                  transform: translate(0,-.2rem);
+                }
+              }
+            }
+
+            &.addInputBlock{
+              border: .1rem solid $color-9;
+              display: none;
+
+              &_active{
+                display: flex;
+              }
+            }
+
+            &:not(:first-child){
+              margin-top: 1rem;
+            }
+
+            &:last-child{
+              background: none;
+              display: flex;
+              justify-content: center;
+            }
+          }
+
+          .line{
+            margin-top: 2rem;
+          }
+        }
+
+        &_hello{
+          padding-top: 5rem;
+          justify-content: flex-end;
+          margin-bottom: 0;
+          flex: 1;
+        }
+      }
+
+      .imageBlock{
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex: 1;
+        padding-top: 5rem;
+
+        .imageBlock__image{
+          width: 100%;
+        }
+
+        &_hello{
+          .imageBlock__image{
+            width: unset;
+          }
+        }
+      }
+
+      &_active{
+        display: flex;
+      }
     }
   }
 
@@ -259,4 +530,18 @@ body{
       background-color: rgba(0, 0, 0, .4)
     }
   }
+}
+
+::-webkit-scrollbar {
+  width: 1rem;
+}
+
+::-webkit-scrollbar-track {
+  background-color: $color-6;
+}
+ 
+::-webkit-scrollbar-thumb {
+  background-color: $color-2;
+  border-radius: 30px;
+  border: .25rem solid $color-6;
 }

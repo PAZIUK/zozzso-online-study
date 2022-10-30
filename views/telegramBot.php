@@ -1,5 +1,5 @@
 
-		<title><?php echo CONFIG::getTitle()?> - Telegram Bot</title>
+		<title><?php echo $siteName?> - Telegram Bot</title>
 
 		<link rel="stylesheet" href="/css/telegramBot.css">
 	</head>

@@ -1,4 +1,4 @@
-    <title><?php echo CONFIG::getTitle()?> - Правила Поведінки</title>
+    <title><?php echo $siteName?> - Правила Поведінки</title>
 
     <link rel="stylesheet" href="/css/rules.css">
     </head>

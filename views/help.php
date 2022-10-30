@@ -1,4 +1,4 @@
-		<title><?php echo CONFIG::getTitle()?> - Допомога</title>
+		<title><?php echo $siteName?> - Допомога</title>
 
 		<link rel="stylesheet" href="/css/help.css">
 	</head>

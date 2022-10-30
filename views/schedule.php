@@ -1,4 +1,4 @@
-		<title><?php echo CONFIG::getTitle()?> - Розклад Дзвінків</title>
+		<title><?php echo $siteName?> - Розклад Дзвінків</title>
 
 		<link rel="stylesheet" href="/css/schedule.css">
 	</head>

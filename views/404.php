@@ -1,4 +1,4 @@
-	<title><?php echo CONFIG::getTitle()?> - Сторінку не знайдено</title>
+	<title><?php echo $siteName?> - Сторінку не знайдено</title>
 		<link rel="stylesheet" href="/css/404.css">
 
 	</head>

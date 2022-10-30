@@ -1,6 +1,13 @@
 <?php
 	class LESSONS
 	{
+		public static function getAllLessons(){
+			$mysqli = DATABASE::Connect();
+			$sql = "SELECT * FROM `zozzso-online-study_lessons` ORDER BY `zozzso-online-study_lessons`.`Lessons_Name` ASC";
+			$stmt = $mysqli->prepare($sql);
+			$stmt->execute();
+			return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+		}
 		public static function getLessonsViaCodeAndDay($code,$day){
 			$classID = CODES::getClassIDViaCode($code);
 
@@ -43,6 +50,29 @@
 				return [$result,$teachers,$lessons];
 			} else {
 				return [];
+			}
+		}
+		public static function saveChanges($post){
+			if(count($post)>2){
+				$mysqli = DATABASE::Connect();
+				$sql = "";
+				$paramsTypes = "";
+				$params = [];
+				if(isset($post["AddLesson"])){
+					$sql .= "INSERT INTO `zozzso-online-study_lessons` (`Lessons_ID`, `Lessons_Name`, `Lessons_AddTime`) VALUES (NULL, ?, current_timestamp());"; 
+					$paramsTypes .= "s";
+					array_push($params, $post["AddLesson"]);
+				}
+				for ($i=1; $i <= intval($post["Lessons"]); $i++) { 
+					if(isset($post["Lesson:".$i])){
+						$sql .= " UPDATE `zozzso-online-study_lessons` SET `Lessons_Name` = ? WHERE `zozzso-online-study_lessons`.`Lessons_ID` = ".$i; 
+						$paramsTypes .= "s";
+						array_push($params, $post["Lesson:".$i]);
+					}
+				}
+				$stmt = $mysqli->prepare($sql);
+				$stmt->bind_param($paramsTypes, ...$params);
+				$stmt->execute();
 			}
 		}
 	}

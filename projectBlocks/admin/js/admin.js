@@ -2,17 +2,64 @@
 
 // Declaration
 const navigationBtn = document.querySelector(".leftMenu .navigationBtns .navigationBtns__title");
-
 const leftMenu = document.querySelector(".leftMenu")
 const main = document.querySelector(".main")
+const buttonOpenLeftMenu = document.querySelector(".infoBlock__buttonOpenLeftMenu")
+const addBtn = document.querySelectorAll(".infoBlock .setting__buttons .setting__addBtn")
+const addBlocks = document.querySelectorAll(".infoBlock .infoBlock__settings .settings__setting.addInputBlock")
+const form = document.querySelectorAll(".infoBlock .infoBlock__settings")
+let lastBlockInForm = document.querySelectorAll(".infoBlock .infoBlock__settings .settings__setting")
+lastBlockInForm = lastBlockInForm[lastBlockInForm.length - 1]
+let formInputs = document.querySelectorAll(".infoBlock .infoBlock__settings .settings__setting input")
 
 // Manipulations with left navigation
 navigationBtn.addEventListener("click",openTheNavigation)
+buttonOpenLeftMenu.addEventListener("click",openTheNavigation)
 window.addEventListener("click",function(e){checkClickArea(e)})
 
-// Check height of left navigation
+// Check height of elements
 window.addEventListener("DOMContentLoaded",checkLeftNavHeight)
 window.addEventListener("resize",checkLeftNavHeight)
+
+// Add add block
+addBtn.forEach(btn=>{
+  btn.addEventListener("click",function(){
+    addBlocks.forEach(block=>{
+      block.classList.toggle("addInputBlock_active")
+      block.querySelectorAll("input").forEach(input=>{
+        input.value = "";
+      })
+    })
+    btn.classList.toggle("setting__addBtn_active")
+
+    removeFormInputWhenAddBlockIsClosed(document.querySelector(`form.settings__setting.setting.setting_visible input[name="AddTN"]`))
+    removeFormInputWhenAddBlockIsClosed(document.querySelector(`form.settings__setting.setting.setting_visible input[name="AddTL"]`))
+    removeFormInputWhenAddBlockIsClosed(document.querySelector(`form.settings__setting.setting.setting_visible input[name="AddLesson"]`))
+  })
+})
+
+// Save changes at teachers block
+formInputs.forEach(input=>{
+  input.addEventListener("input",function(){
+    let inputsInsideSaveChangesForm = document.querySelector(`form.settings__setting.setting.setting_visible input[name="${input.getAttribute('name')}"]`)
+    if(!inputsInsideSaveChangesForm){
+      let newSaveChangesInput = null;
+      newSaveChangesInput = document.createElement("input")
+      newSaveChangesInput.setAttribute('type','hidden')
+      newSaveChangesInput.setAttribute('name',`${input.getAttribute("name")}`)
+      newSaveChangesInput.setAttribute('value',`${input.value}`)
+      document.querySelector("form.settings__setting.setting.setting_visible").appendChild(newSaveChangesInput);
+    } else {
+      if(input.value == input.getAttribute("value")){
+        inputsInsideSaveChangesForm.remove();
+      } else {
+        inputsInsideSaveChangesForm.setAttribute('name',`${input.getAttribute("name")}`)
+        inputsInsideSaveChangesForm.setAttribute('value',`${input.value}`)
+      }
+      
+    }
+  })
+})
 
 // Functions
 function openTheNavigation(){
@@ -33,4 +80,8 @@ function checkLeftNavHeight(){
   } else {
     leftMenu.classList.remove("leftMenu_scroll")
   }
+}
+
+function removeFormInputWhenAddBlockIsClosed(form){
+  if(form){ form.remove() }
 }

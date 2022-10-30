@@ -13,7 +13,7 @@
     REDIRECT::toPageViaLink("/view/class/".$_GET["code"]."/navigation");
   }
 ?>
-      <title><?php echo CONFIG::getTitle()?> - <?php echo CODES::getNameByCode($_GET["code"])?></title>
+      <title><?php echo $siteName?> - <?php echo CODES::getNameByCode($_GET["code"])?></title>
 
       <link rel="stylesheet" href="/css/class.css">
     </head>
@@ -96,7 +96,7 @@
                     <div class="teacher__info">
                       <div class="teacher__desc"><?php echo $teacherName?></div>
                     </div>
-                    <button class="teacher__button button button_link" link="<?php echo $teacherLink?>">Перейти в ZOOM</button>
+                    <button class="teacher__button button button_link" link="<?php echo $teacherLink?>"><?php echo CONFIG::getBtnRedirectTo()?></button>
                   </div>
                 <?php 
                 } 

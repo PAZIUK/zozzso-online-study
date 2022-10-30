@@ -7,6 +7,9 @@
     require_once("models/schedule.php");
     require_once("models/codes.php");
     require_once("models/lessons.php");
+    require_once("models/teachers.php");
+
+    $siteName = CONFIG::getTitle();
 
     require_once("layout/head.php");
 

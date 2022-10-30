@@ -1,4 +1,4 @@
-		<title><?php echo CONFIG::getTitle()?></title>
+		<title><?php echo $siteName?></title>
 
 		<link rel="stylesheet" href="/css/main.css">
 
