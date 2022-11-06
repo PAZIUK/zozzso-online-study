@@ -9,7 +9,7 @@
   if(!isset($_GET["code"])||(isset($_GET["code"])&&count(CODES::isCodeExist($_GET["code"]))==0)||(isset($_GET["code"])&&CODES::isCodeBelongsAdmin($_GET["code"]))){  
     REDIRECT::toErrorPage();
   }
-  if((isset($_GET["code"])&&!isset($_GET["view"]))||(isset($_GET["view"])&&$_GET["view"]!="navigation"&&$_GET["view"]!="day")||(isset($_GET["day"])&&intval($_GET["day"])>5)||(isset($_GET["view"])&&$_GET["view"]=="day"&&!isset($_GET["day"]))){
+  if((isset($_GET["code"])&&!isset($_GET["view"]))||(isset($_GET["view"])&&$_GET["view"]!="navigation"&&$_GET["view"]!="day")||(isset($_GET["day"])&&intval($_GET["day"])>5)||(isset($_GET["day"])&&intval($_GET["day"])<1)||(isset($_GET["view"])&&$_GET["view"]=="day"&&!isset($_GET["day"]))){
     REDIRECT::toPageViaLink("/view/class/".$_GET["code"]."/navigation");
   }
 ?>
@@ -79,7 +79,13 @@
               </div>
               <div class="lesson__teachers teachers">
               <?php 
-                $teachers = explode(",",$lessonsInfo[0][$i]["ScheduleLessons_TeacherID"]);
+                $teachers = [];
+                $exploded = explode(",", $lessonsInfo[0][$i]["ScheduleLessons_TeacherID"]);
+                for ($teachersDB=0; $teachersDB < count($exploded); $teachersDB++) { 
+                  if($exploded[$teachersDB]>0){
+                    array_push($teachers, $exploded[$teachersDB]);
+                  }
+                }
                 $teacherName = "";
                 $teacherLink = "";
                 for ($I=0; $I < count($teachers); $I++) { 

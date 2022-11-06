@@ -21,5 +21,10 @@
 			<script>window.location.href = "<?php echo $link?>"</script> 
 		<?php
 		}
+		public static function reloadPage(){
+			?>
+				<script>window.location.href = window.location.href</script> 
+			<?php
+			}
 	}
 ?>

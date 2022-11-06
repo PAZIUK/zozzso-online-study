@@ -11,6 +11,10 @@ const form = document.querySelectorAll(".infoBlock .infoBlock__settings")
 let lastBlockInForm = document.querySelectorAll(".infoBlock .infoBlock__settings .settings__setting")
 lastBlockInForm = lastBlockInForm[lastBlockInForm.length - 1]
 let formInputs = document.querySelectorAll(".infoBlock .infoBlock__settings .settings__setting input")
+let numberInputs = document.querySelectorAll(".infoBlock .infoBlock__settings .settings__setting input.setting__input_numbers")
+const selectsInScheduleLessons = document.querySelectorAll(".infoBlock .lessonBlock .lessonBlock__lessonSelectBlock_active .lessonBlock__selectLessons select")
+const addTeacherBtnsInScheduleLessons = document.querySelectorAll(".infoBlock .lessonBlock .lessonBlock__button_addTeacher")
+const addLessonBtnsInScheduleLessons = document.querySelectorAll(".infoBlock .lessonBlock .lessonBlock__button_addLesson")
 
 // Manipulations with left navigation
 navigationBtn.addEventListener("click",openTheNavigation)
@@ -61,6 +65,28 @@ formInputs.forEach(input=>{
   })
 })
 
+// Number validation for number inputs
+numberInputs.forEach(input=>{
+  input.addEventListener("input",function(){
+    this.value = inputValidator(this.value)
+  })
+})
+
+// Manipulations with blocks in schedule lesons block
+addTeacherBtnsInScheduleLessons.forEach(btn=>{
+  btn.addEventListener("click",function(){
+    this.classList.remove("lessonBlock__button_active")
+    this.parentElement.querySelectorAll(".setting__input")[1].classList.add("setting__input_active")
+  })
+})
+
+addLessonBtnsInScheduleLessons.forEach(btn=>{
+  btn.addEventListener("click",function(){
+    this.classList.remove("lessonBlock__button_active")
+    this.parentElement.parentElement.parentElement.querySelectorAll(".lessonBlock__lessonSelectBlock")[1].classList.add("lessonBlock__lessonSelectBlock_active")
+  })
+})
+
 // Functions
 function openTheNavigation(){
   leftMenu.classList.toggle("leftMenu_open")
@@ -84,4 +110,15 @@ function checkLeftNavHeight(){
 
 function removeFormInputWhenAddBlockIsClosed(form){
   if(form){ form.remove() }
+}
+
+function inputValidator(text){
+  let letters = text.split("")
+  let newText = ""
+
+  for (let i = 0; i < letters.length; i++) {
+    if(!isNaN(+letters[i])){ newText+= letters[i]}
+  }
+
+  return newText
 }

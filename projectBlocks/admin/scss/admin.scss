@@ -17,6 +17,7 @@ $color-6: #5b2ee6;
 $color-7: #ffa700;
 $color-8: #797979;
 $color-9: #00ff00;
+$color-10: #183efb;
 
 $font-1: 'Nunito', sans-serif;
 $font-2: 'Comfortaa', cursive;
@@ -392,6 +393,19 @@ body{
               width: 50%;
               min-width: 50%;
               display: flex;
+              align-items: center;
+
+              .hm{
+                margin: 0 .2rem;
+                font-weight: 500;
+                font-size: 2rem;
+              }
+
+              .se{
+                margin: 0 .3rem;
+                font-weight: 600;
+                font-size: 2rem;
+              }
             }
 
             &__input{
@@ -405,8 +419,27 @@ body{
               text-align: center;
               font-size: 1.2rem;
 
-              &_teacher{
+              &_second{
                 margin-right: 1.5rem;
+              }
+            }
+
+            &__button{
+              flex: 1 1 auto;
+              border-radius: 10px;
+              padding: .8rem;
+              font-family: $font-2;
+              color: white;
+              text-decoration: none;
+              font-weight: 600;
+              border: none;
+              background-color: $color-10;
+              text-align: center;
+              font-size: 1.2rem;
+              transition: all .7s ease;
+
+              &:hover{
+                transform: translate(0,-.2rem);
               }
             }
 
@@ -460,12 +493,130 @@ body{
               }
             }
 
+            &__dayTitle{
+              text-align: center;
+              font-weight: 600;
+              font-size: 1.5rem;
+              font-family: $font-1;
+            }
+
             &.addInputBlock{
               border: .1rem solid $color-9;
               display: none;
 
               &_active{
                 display: flex;
+              }
+            }
+
+            &_classSchedule{
+              flex-direction: column;
+              padding: 1rem .5rem;
+
+              .lessonBlock{
+                display: flex;
+                align-items: center;
+                border-radius: 10px;
+                padding: 0 .5rem;
+
+                &__number{
+                  font-weight: 500;
+                  font-size: 1.2rem;
+                  font-family: $font-1;
+                  margin-right: .5rem;
+                }
+
+                &__lessonWrapper{
+                  display: flex;
+                  flex-direction: column;
+                  flex: 1 1 auto;
+
+                  .setting__input{
+                    padding: .5rem 1rem;
+                    display: none;
+  
+                    option{
+                      font-weight: 600;
+                    }
+
+                    &_active{
+                      display: unset;
+                    }
+                  }
+                }
+
+                &__lessonSelectBlock{
+                  display: none;
+                  justify-content: space-between;
+
+                  &_active{
+                    display: flex;
+                  }
+
+                  &:last-child{
+                    margin-top: .5rem;
+                  }
+                }
+
+                &__selectLessons{
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  flex: 0 0;
+
+                  select{
+                    flex: unset;
+                  }
+                }
+
+                &__selectTeachers{
+                  flex: 0 0;
+                  display: none;
+
+                  .setting__input_second{
+                    margin: .5rem 0 0;
+                  }
+
+                  .selectLine{
+                    width: 100%;
+                    height: .2rem;
+                    background-color: $color-2;
+                    border-radius: 50%;
+                    margin-bottom: .5rem;
+                  }
+
+                  &_active{
+                    display: unset;
+                  }
+                }
+
+                &__button{
+                  display: none;
+                  margin-top: .5rem;
+                  width: 100%;
+                  border-radius: 10px;
+                  padding: .5rem .8rem;
+                  font-family: $font-1;
+                  font-weight: 600;
+                  border: none;
+                  background-color: $color-10;
+                  color: white;
+                  justify-content: center;
+                  font-size: 1.2rem;
+                  cursor: pointer;
+
+                  &_active{
+                    display: flex;
+                  }
+                }
+                
+                &:not(:last-child){
+                  padding-bottom: 1rem;
+                  box-shadow: 0px 5px 5px -5px rgba(34, 60, 80, 0.6);
+                }
+                &:not(:first-child){
+                  margin-top: 1rem;
+                }
               }
             }
 
@@ -491,6 +642,14 @@ body{
           margin-bottom: 0;
           flex: 1;
         }
+
+        &_scheduleLessonsClass{
+          margin-bottom: 0;
+
+          .infoBlock__wrapper{
+            width: 100%;
+          }
+        }
       }
 
       .imageBlock{
@@ -508,6 +667,10 @@ body{
           .imageBlock__image{
             width: unset;
           }
+        }
+
+        &_scheduleLessonsClass{
+          padding-top: 0;
         }
       }
 
@@ -531,6 +694,8 @@ body{
     }
   }
 }
+
+
 
 ::-webkit-scrollbar {
   width: 1rem;
