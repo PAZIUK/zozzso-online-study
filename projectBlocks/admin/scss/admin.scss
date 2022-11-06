@@ -255,6 +255,7 @@ body{
       display: flex;
       justify-content: center;
       align-items: center;
+      text-align: center;
       font-size: 1.8rem;
       padding: 1.5rem 1rem;
       font-weight: 800;
@@ -307,7 +308,6 @@ body{
             margin-right: 1rem;
             display: flex;
             align-items: center;
-            height: 100%;
           }
         }
 
@@ -567,6 +567,10 @@ body{
                   select{
                     flex: unset;
                   }
+
+                  &:first-child{
+                    margin-right: .5rem;
+                  }
                 }
 
                 &__selectTeachers{
@@ -691,6 +695,396 @@ body{
       width: 100%;
       height: 100%;
       background-color: rgba(0, 0, 0, .4)
+    }
+  }
+}
+
+
+// Media queries for hello page in admin panel
+@media(max-width: 1200px){
+  .main {
+    .mainBlock{
+      .section{ 
+        .imageBlock_hello{
+          .imageBlock__image{
+            width: 90%;
+          }
+        }
+      }
+    }
+  }
+}
+@media(max-width: 768px){
+  .main {
+    .mainBlock{
+      .section_hello{ 
+        flex-direction: column-reverse;
+
+        .infoBlock_hello{
+          justify-content: center;
+        }
+
+        .imageBlock_hello{
+          display: none;
+        }
+      }
+    }
+  }
+}
+@media(max-width: 480px){
+  .main {
+    .header__title{
+      font-size: 1.4rem;
+    }
+
+    .mainBlock{
+      .section_hello{ 
+        .infoBlock_hello{
+          padding-top: 2.5rem;
+        }
+
+        .infoBlock__subtitle{
+          font-size: 1rem;
+        }
+
+        .infoBlock__title{
+          font-size: 4rem;
+        }
+
+        .infoBlock__desc{
+          font-size: 1rem;
+        }
+
+        .infoBlock__buttonOpenLeftMenu{
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
+
+// Media queries for config page in admin panel
+@media(max-width: 960px){
+  .main{
+    .mainBlock{
+      .section_config{
+        .imageBlock_config{
+          display: none;
+        }
+      }
+    } 
+  }
+}
+@media(max-width: 768px){
+  .main{
+    .mainBlock{
+      .section_config{
+        .infoBlock_config{
+          .settings{
+            .setting{
+              padding: 1rem 1rem .5rem;
+              display: grid;
+              grid-template-areas: "img title"
+                                  "input input";
+
+              .setting__imageBlock{
+                grid-area: img;
+              }
+
+              .setting__title{
+                grid-area: title;
+              }
+
+              .setting__changeBlock{
+                grid-area: input;
+                margin-top: .5rem;
+                width: 100%;
+
+                textarea.setting__input{
+                  height: 10rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    } 
+  }
+}
+@media(max-width: 480px){
+  .main{
+    .mainBlock{
+      .section_config{
+        .infoBlock_config{
+          .settings{
+            .setting{
+              padding: 1rem 1rem .5rem;
+              display: grid;
+              grid-template-areas: "title title"
+                                  "input input";
+
+              .setting__imageBlock{
+                display: none;
+              }
+
+              .setting__title{
+                grid-area: title;
+                font-size: 1.2rem;
+                justify-content: center;
+                text-align: center;
+                width: 100%;
+              }
+
+              .setting__changeBlock{
+                grid-area: input;
+                margin-top: .5rem;
+                width: 100%;
+
+                .setting__input{
+                  padding: .5rem .8rem;
+                  width: 100%;
+                }
+
+                textarea.setting__input{
+                  height: 10rem;
+                }
+              }
+
+              .setting__buttons{
+                .button{
+                  font-size: 1rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    } 
+  }
+} 
+
+// Media queries for many pages in admin panel
+@media(max-width: 1200px){
+  .main {
+    .mainBlock{
+      .section{ 
+        .imageBlock{
+          display: none;
+        }
+      }
+    }
+  }
+}
+@media(max-width: 768px){
+  .main{
+    .mainBlock{
+      .section{
+        .infoBlock{
+          .settings{
+            .setting,
+            .setting.addInputBlock_active{
+              padding: 1rem 1rem .5rem;
+              display: grid;
+              grid-template-areas: "title title"
+                                  "input input";
+
+              .setting__imageBlock{
+                display: none;
+              }
+
+              .setting__title{
+                grid-area: title;
+                justify-content: center;
+              }
+
+              .setting__changeBlock{
+                grid-area: input;
+                margin-top: .5rem;
+                width: 100%;
+              }
+            }
+
+            .setting__input_second{
+              margin: 0;
+            }
+
+            .setting__buttons{
+              flex-direction: column;
+              align-items: center;
+
+              button:last-child{
+                margin-top: .5rem;
+              }
+            }
+          }
+        }
+      }
+    } 
+  }
+}
+@media(max-width: 480px){
+  .main{
+    .mainBlock{
+      .section{
+        .infoBlock{
+          .infoBlock__desc{
+            font-size: .9rem;
+            line-height: 1.4rem;
+            margin: .5rem 0;
+          }
+
+          .settings{
+            .setting,
+            .setting.addInputBlock_active{
+              .setting__changeBlock,
+              .setting__title{
+                width: 100%;
+
+                .setting__input{
+                  width: 100%;
+                  flex: unset;
+                }
+              }
+            }
+          }
+        }
+      }
+      .section_schedule{
+        .infoBlock{
+          .settings{
+            .setting,
+            .setting.addInputBlock_active{
+              .setting__changeBlock,
+              .setting__title{
+                .setting__input{
+                  padding: .2rem;
+                  font-size: 1rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    } 
+  }
+}
+@media(max-width: 320px){
+  .main{
+    .mainBlock{
+      .section{
+        .infoBlock{
+          .infoBlock__desc{
+            margin: .5rem 0;
+
+            img{
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+} 
+
+// Media queries for schedule lessons page in admin panel
+@media(max-width: 960px){
+  .main{
+    .mainBlock{
+      .section{
+        .infoBlock{
+          .settings{
+            .setting_classSchedule{
+              .lessonBlock__lessonSelectBlock{
+                flex-direction: column;
+
+                &:last-child{
+                  position: relative;
+                  margin-top: 1.2rem;
+
+                  &::after{
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    top: -.65rem;
+                    width: 100%;
+                    height: .2rem;
+                    background-color: $color-2;
+                    border-radius: 50%;
+                    margin-bottom: .5rem;
+                  }
+                }
+              }
+
+              .lessonBlock__selectTeachers{
+                margin-top: .5rem;
+
+                .selectLine{
+                  display: none;
+                }
+
+                .setting__input{
+                  width: 100%;
+                }
+              }
+
+              .lessonBlock__selectLessons:first-child{
+                margin: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media(max-width: 768px){
+  .main{
+    .mainBlock{
+      .section{
+        .infoBlock{
+          .settings{
+            .setting{
+              display: flex;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media(max-width: 560px){
+  .main{
+    .mainBlock{
+      .section{
+        .infoBlock{
+          .settings{
+            .setting{
+              padding: 1rem .1rem .5rem;
+
+              &__input{
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media(max-width: 480px){
+  .main{
+    .mainBlock{
+      .section{
+        .infoBlock{
+          .settings{
+            .setting{
+              &__input{
+                font-size: 1rem;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

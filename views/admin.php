@@ -67,8 +67,8 @@
           </li>
           <li class="buttons__button button">
             <a href="/view/admin/teachers" class="button__link <?php if(isset($_GET["view"])&&$_GET["view"]=="teachers"){ echo "button__link_active"; }?>">
-              <img src="/img/config/admin/teacher.png" alt="Учителі" class="button__img"/>
-              <p class="button__text">Учителі</p>
+              <img src="/img/config/admin/teacher.png" alt="Вчителі" class="button__img"/>
+              <p class="button__text">Вчителі</p>
             </a>
           </li>
           <li class="buttons__button button">
@@ -112,7 +112,7 @@
                     echo "Налаштування сайту";
                     break;
                   case "teachers":
-                    echo "Учителі";
+                    echo "Вчителі";
                     break;
                   case "lessons":
                     echo "Предмети";
@@ -205,12 +205,12 @@
               <img class="imageBlock__image" src="/img/config/admin/setting.webp" alt="Налаштування сайту"/>
             </div>
           </div>
-          <div class="mainBlock__section section <?php if(isset($_GET["view"])&&$_GET["view"]=="teachers"){ echo "section_active"; }?>">
+          <div class="mainBlock__section section section_teachers <?php if(isset($_GET["view"])&&$_GET["view"]=="teachers"){ echo "section_active"; }?>">
             <div class="section__infoBlock infoBlock infoBlock_teachers">
               <div class="infoBlock__wrapper">
                 <h2 class="infoBlock__desc desc">
                   <img src="/img/config/admin/advice-message.png" alt="Порада" class="desc__image">
-                  Налаштуйте посилання учителів для організації онлайн навчання в нашій школі
+                  Налаштуйте посилання вчителів для організації онлайн навчання в нашій школі
                 </h2>
                 <div class="infoBlock__settings settings">
                   <?php 
@@ -218,7 +218,7 @@
                     for ($i=0; $i < count($teachers); $i++) {
                   ?>
                     <div class="settings__setting setting">
-                      <div class="setting__imageBlock"><img src="/img/config/admin/teachers-icon.png" alt="Учитель" class="setting__image"></div>
+                      <div class="setting__imageBlock"><img src="/img/config/admin/teachers-icon.png" alt="Вчитель" class="setting__image"></div>
                       <div class="setting__title">
                         <input type="text" class="setting__input setting__input_second" minlength="5" maxlength="50" name="TN:<?php echo $teachers[$i]["Teachers_ID"]?>" required value="<?php echo $teachers[$i]["Teachers_Name"]?>" <?php if($i==0){ echo "disabled";}?> placeholder="Введіть П.І.П вчителя">
                       </div>
@@ -229,7 +229,7 @@
                   <?php } ?>
                   <div class="settings__setting setting addInputBlock">
                     <div class="setting__imageBlock">
-                      <img src="/img/config/admin/teachers-icon.png" alt="Учитель" class="setting__image">
+                      <img src="/img/config/admin/teachers-icon.png" alt="Вчитель" class="setting__image">
                     </div>
                     <div class="setting__title">
                       <input type="text" class="setting__input setting__input_second" minlength="5" maxlength="50" required placeholder="Введіть П.І.П вчителя" name="AddTN" value="">
@@ -244,7 +244,7 @@
                     <div class="setting__buttons">
                       <button class="setting__addBtn button" type="button">
                         <img src="/img/config/plus.png" class="btnImage" alt="Плюс">
-                        Додати учителя
+                        Додати вчителя
                       </button>
                       <button class="setting__submitBtn button">Зберегти зміни</button>
                     </div>
@@ -253,10 +253,10 @@
               </div>
             </div>
             <div class="section__imageBlock imageBlock imageBlock_teachers">
-              <img class="imageBlock__image" src="/img/config/admin/online-learning.webp" alt="Учителі"/>
+              <img class="imageBlock__image" src="/img/config/admin/online-learning.webp" alt="Вчителі"/>
             </div>
           </div>
-          <div class="mainBlock__section section <?php if(isset($_GET["view"])&&$_GET["view"]=="lessons"){ echo "section_active"; }?>">
+          <div class="mainBlock__section section section_lessons <?php if(isset($_GET["view"])&&$_GET["view"]=="lessons"){ echo "section_active"; }?>">
             <div class="section__infoBlock infoBlock infoBlock_lessons">
               <div class="infoBlock__wrapper">
                 <h2 class="infoBlock__desc desc">
@@ -299,7 +299,7 @@
               <img class="imageBlock__image" src="/img/config/admin/books-and-laptop.png" alt="Предмети"/>
             </div>
           </div>
-          <div class="mainBlock__section section <?php if(isset($_GET["view"])&&$_GET["view"]=="schedule"){ echo "section_active"; }?>">
+          <div class="mainBlock__section section section_schedule <?php if(isset($_GET["view"])&&$_GET["view"]=="schedule"){ echo "section_active"; }?>">
             <div class="section__infoBlock infoBlock infoBlock_schedule">
               <div class="infoBlock__wrapper">
                 <h2 class="infoBlock__desc desc">
@@ -343,7 +343,7 @@
               <img class="imageBlock__image" src="/img/config/admin/bell.webp" alt="Роклад дзвінків"/>
             </div>
           </div>
-          <div class="mainBlock__section section <?php if(isset($_GET["view"])&&$_GET["view"]=="scheduleLessons"){ echo "section_active"; }?>">
+          <div class="mainBlock__section section section_scheduleLessons <?php if(isset($_GET["view"])&&$_GET["view"]=="scheduleLessons"){ echo "section_active"; }?>">
             <div class="section__infoBlock infoBlock infoBlock_scheduleLessons">
               <div class="infoBlock__wrapper">
                 <h2 class="infoBlock__desc desc">
@@ -374,7 +374,7 @@
               <img class="imageBlock__image" src="/img/config/admin/calendar.webp" alt="Роклад уроків"/>
             </div>
           </div>
-          <div class="mainBlock__section section <?php if(isset($_GET["view"])&&$_GET["view"]=="codes"){ echo "section_active"; }?>">
+          <div class="mainBlock__section section section_codes <?php if(isset($_GET["view"])&&$_GET["view"]=="codes"){ echo "section_active"; }?>">
             <div class="section__infoBlock infoBlock infoBlock_codes">
               <div class="infoBlock__wrapper">
                 <h2 class="infoBlock__desc desc">
@@ -426,7 +426,7 @@
               <img class="imageBlock__image" src="/img/config/admin/binary-code.png" alt="Коди доступу"/>
             </div>
           </div>
-          <div class="mainBlock__section section <?php if(isset($_GET["view"])&&$_GET["view"]=="scheduleLessonsClass"){ echo "section_active"; }?>">
+          <div class="mainBlock__section section section_scheduleLessonsClass <?php if(isset($_GET["view"])&&$_GET["view"]=="scheduleLessonsClass"){ echo "section_active"; }?>">
             <div class="section__infoBlock infoBlock infoBlock_scheduleLessonsClass">
               <div class="infoBlock__wrapper">
                 <?php if(isset($_GET["view"])&&$_GET["view"]=="scheduleLessonsClass"&&!CODES::isCodeExist($_GET["class"])){
@@ -476,7 +476,7 @@
               <img class="imageBlock__image" src="/img/config/admin/calendar.webp" alt="Роклад уроків"/>
             </div>
           </div>
-          <div class="mainBlock__section section <?php if(isset($_GET["view"])&&$_GET["view"]=="scheduleLessonsClassSchedule"){ echo "section_active"; }?>">
+          <div class="mainBlock__section section section_scheduleLessonsClassSchedule <?php if(isset($_GET["view"])&&$_GET["view"]=="scheduleLessonsClassSchedule"){ echo "section_active"; }?>">
             <div class="section__infoBlock infoBlock infoBlock_scheduleLessonsClass">
               <div class="infoBlock__wrapper">
                 <?php if((isset($_GET["view"])&&$_GET["view"]=="scheduleLessonsClassSchedule"&&!CODES::isCodeExist($_GET["class"]))||(isset($_GET["day"])&&(intval($_GET["day"])<1||intval($_GET["day"])>5))){
