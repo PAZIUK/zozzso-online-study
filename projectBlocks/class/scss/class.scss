@@ -12,10 +12,6 @@ $font-1:'Poppins', sans-serif;
 $font-2:'Rubik', sans-serif;
 $font-3:'Nunito', sans-serif;
 
-*{
-	overflow-x: hidden;
-}
-
 body{
 	overflow-x: hidden;
   background-color: white;
@@ -36,6 +32,7 @@ body{
   justify-content: center;
   align-items: center;
   flex-direction: column;
+	overflow-x: hidden;
 
   .daysButtons__link{
     color: $color-2;
@@ -143,6 +140,7 @@ body{
 	flex: 1 1 auto;
 	display: flex;
 	width: calc(100% - 1rem);
+	overflow-x: hidden;
 
 	.lesson{
 		border-radius: 10px;
