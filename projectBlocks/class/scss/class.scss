@@ -12,6 +12,10 @@ $font-1:'Poppins', sans-serif;
 $font-2:'Rubik', sans-serif;
 $font-3:'Nunito', sans-serif;
 
+*{
+	overflow-x: hidden;
+}
+
 body{
 	overflow-x: hidden;
   background-color: white;
