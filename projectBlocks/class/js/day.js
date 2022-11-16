@@ -140,7 +140,7 @@ function findLesson(schedule){
       let end = Object.values(schedule)[i][1];
       let date = new Date();
       let hours = date.getHours();
-      let minutes = date.getMinutes();
+      let minutes = date.getMinutes() + 3;
       let seconds = date.getSeconds();
       if(checkTime(start, end, hours, minutes, seconds)){
         lessonNumber = Object.keys(schedule)[i];

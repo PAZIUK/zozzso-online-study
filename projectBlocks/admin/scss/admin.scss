@@ -18,6 +18,7 @@ $color-7: #ffa700;
 $color-8: #797979;
 $color-9: #00ff00;
 $color-10: #183efb;
+$color-11:#ff4343;
 
 $font-1: 'Nunito', sans-serif;
 $font-2: 'Comfortaa', cursive;
@@ -379,6 +380,23 @@ body{
               .setting__image{
                 width: 2rem;
               }
+
+              .deleteBtn{
+                background-color: $color-11;
+                border: none;
+                border-radius: 10px;
+                cursor: pointer;
+                padding: .3rem .5rem;
+                transition: all .7s ease;
+
+                .deleteBtnImage{
+                  width: 1.4rem;
+                }
+
+                &:hover{
+                  transform: translate(0,-.2rem);
+                }
+              }
             }
 
             &__title{
@@ -624,11 +642,15 @@ body{
               }
             }
 
+            &_nonVisible{
+              display: none;
+            }
+
             &:not(:first-child){
               margin-top: 1rem;
             }
 
-            &:last-child{
+            &_noBack{
               background: none;
               display: flex;
               justify-content: center;
@@ -1040,7 +1062,7 @@ body{
 @media(max-width: 768px){
   .main{
     .mainBlock{
-      .section{
+      .section_scheduleLessonsClassSchedule{
         .infoBlock{
           .settings{
             .setting{

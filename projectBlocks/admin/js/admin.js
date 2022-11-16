@@ -15,6 +15,7 @@ let numberInputs = document.querySelectorAll(".infoBlock .infoBlock__settings .s
 const selectsInScheduleLessons = document.querySelectorAll(".infoBlock .lessonBlock .lessonBlock__lessonSelectBlock_active .lessonBlock__selectLessons select")
 const addTeacherBtnsInScheduleLessons = document.querySelectorAll(".infoBlock .lessonBlock .lessonBlock__button_addTeacher")
 const addLessonBtnsInScheduleLessons = document.querySelectorAll(".infoBlock .lessonBlock .lessonBlock__button_addLesson")
+const deleteBtns = document.querySelectorAll(".infoBlock .infoBlock__settings .settings__setting .deleteBtn")
 
 // Manipulations with left navigation
 navigationBtn.addEventListener("click",openTheNavigation)
@@ -84,6 +85,22 @@ addLessonBtnsInScheduleLessons.forEach(btn=>{
   btn.addEventListener("click",function(){
     this.classList.remove("lessonBlock__button_active")
     this.parentElement.parentElement.parentElement.querySelectorAll(".lessonBlock__lessonSelectBlock")[1].classList.add("lessonBlock__lessonSelectBlock_active")
+  })
+})
+
+// Delete buttons actions
+deleteBtns.forEach(btn=>{
+  btn.addEventListener("click",function(){
+    let isDelete = confirm("Ви впевнені що хочете видалити цей запис?")
+    if(isDelete){
+      this.parentElement.parentElement.classList.add("setting_nonVisible")
+      let form = this.parentElement.parentElement.parentElement.querySelector("form.settings__setting.setting_visible")
+      let deleteRow = document.createElement("input")
+      deleteRow.setAttribute('type','hidden')
+      deleteRow.setAttribute('name',`${this.getAttribute("whatDelete")}`)
+      deleteRow.setAttribute('value',`${this.getAttribute("whatDelete").split(":")[1]}`)
+      form.appendChild(deleteRow);
+    }
   })
 })
 

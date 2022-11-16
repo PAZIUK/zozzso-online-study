@@ -49,6 +49,13 @@
 				return "";
 			}
 		}
+		public static function getMaxID(){
+			$mysqli = DATABASE::Connect();
+			$sql = "SELECT MAX(`Codes_ID`) FROM `zozzso-online-study_codes`";
+			$stmt = $mysqli->prepare($sql);
+			$stmt->execute();
+			return $stmt->get_result()->fetch_all(MYSQLI_ASSOC)[0]["MAX(`Codes_ID`)"];
+		}
 		public static function isCodeBelongsAdmin($code){
 			$mysqli = DATABASE::Connect();
 			$sql = "SELECT `Roles_Role` FROM `zozzso-online-study_roles` INNER JOIN `zozzso-online-study_codes` ON `zozzso-online-study_codes`.`Codes_ID` = `zozzso-online-study_roles`.`Roles_CodeID` WHERE `zozzso-online-study_codes`.`Codes_Code`= ? ";
@@ -85,6 +92,18 @@
 						$sql = "UPDATE `zozzso-online-study_codes` SET `Codes_ClassName` = ? WHERE `zozzso-online-study_codes`.`Codes_ID` = ".$i;
 						$stmt = $mysqli->prepare($sql);
 						$stmt->bind_param("s", $post["ClassName:".$i]);
+						$stmt->execute();
+					}
+					
+					if(isset($post["Delete:".$i])){
+						$sql = "DELETE FROM `zozzso-online-study_codes` WHERE `zozzso-online-study_codes`.`Codes_ID` = ?"; 
+						$stmt = $mysqli->prepare($sql);
+						$stmt->bind_param("i", $post["Delete:".$i]);
+						$stmt->execute();
+
+						$sql = "DELETE FROM `zozzso-online-study_schedulelessons` WHERE `zozzso-online-study_schedulelessons`.`ScheduleLessons_ClassID` = ?"; 
+						$stmt = $mysqli->prepare($sql);
+						$stmt->bind_param("i", $post["Delete:".$i]);
 						$stmt->execute();
 					}
 				}

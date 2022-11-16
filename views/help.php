@@ -22,13 +22,6 @@
 					<h2 class="block__text">Розклад дзвінків</h2>
 				</a>
 			</div>
-			
-			<div class="help__block block">
-				<a href="/view/telegramBot" class="block__link">
-					<img src="/img/help/telegram.png" alt="Telegram" class="block__img">
-					<h2 class="block__text">Telegram - допомога</h2>
-				</a>
-			</div>
 		</section>
 
 		<div class="background"></div>

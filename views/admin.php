@@ -193,7 +193,7 @@
                       <input type="text" class="setting__input" maxlength="50" required name="BtnRedirectTo" value="<?php echo CONFIG::getBtnRedirectTo()?>" placeholder="Введіть напис на кнопці посилання">
                     </div>
                   </div>
-                  <div class="settings__setting setting">
+                  <div class="settings__setting setting setting_noBack">
                     <div class="setting__buttons">
                       <button class="setting__submitBtn button">Зберегти зміни</button>
                     </div>
@@ -213,20 +213,18 @@
                   Налаштуйте посилання вчителів для організації онлайн навчання в нашій школі
                 </h2>
                 <div class="infoBlock__settings settings">
-                  <?php 
-                    $teachers = TEACHERS::getAllTeachers();
-                    for ($i=0; $i < count($teachers); $i++) {
-                  ?>
-                    <div class="settings__setting setting">
-                      <div class="setting__imageBlock"><img src="/img/config/admin/teachers-icon.png" alt="Вчитель" class="setting__image"></div>
-                      <div class="setting__title">
-                        <input type="text" class="setting__input setting__input_second" minlength="5" maxlength="50" name="TN:<?php echo $teachers[$i]["Teachers_ID"]?>" required value="<?php echo $teachers[$i]["Teachers_Name"]?>" <?php if($i==0){ echo "disabled";}?> placeholder="Введіть П.І.П вчителя">
-                      </div>
-                      <div class="setting__changeBlock">
-                        <input type="text" class="setting__input" minlength="5" maxlength="100" name="TL:<?php echo $teachers[$i]["Teachers_ID"]?>" required value="<?php echo $teachers[$i]["Teachers_Link"]?>" <?php if($i==0){ echo "disabled";} else { echo "placeholder='Введіть посилання вчителя'"; }?>>
-                      </div>
+                  <?php $teachers = TEACHERS::getAllTeachers(); ?>
+                  <form class="settings__setting setting setting_noBack <?php if(isset($_GET["view"])&&$_GET["view"]=="teachers"){ echo "setting_visible"; }?>" method="POST">
+                    <input type="hidden" name="Section" value="Teachers">
+                    <input type="hidden" name="Teachers" value="<?php echo TEACHERS::getMaxID();?>">
+                    <div class="setting__buttons">
+                      <button class="setting__addBtn button" type="button">
+                        <img src="/img/config/plus.png" class="btnImage" alt="Плюс">
+                        Додати вчителя
+                      </button>
+                      <button class="setting__submitBtn button">Зберегти зміни</button>
                     </div>
-                  <?php } ?>
+                  </form>
                   <div class="settings__setting setting addInputBlock">
                     <div class="setting__imageBlock">
                       <img src="/img/config/admin/teachers-icon.png" alt="Вчитель" class="setting__image">
@@ -238,17 +236,31 @@
                       <input type="text" class="setting__input" minlength="5" maxlength="100" required placeholder="Введіть посилання вчителя" name="AddTL" value="">
                     </div>
                   </div>
-                  <form class="settings__setting setting <?php if(isset($_GET["view"])&&$_GET["view"]=="teachers"){ echo "setting_visible"; }?>" method="POST">
-                    <input type="hidden" name="Section" value="Teachers">
-                    <input type="hidden" name="Teachers" value="<?php echo count($teachers);?>">
-                    <div class="setting__buttons">
-                      <button class="setting__addBtn button" type="button">
-                        <img src="/img/config/plus.png" class="btnImage" alt="Плюс">
-                        Додати вчителя
-                      </button>
-                      <button class="setting__submitBtn button">Зберегти зміни</button>
+                  <?php 
+                    for ($i=0; $i < count($teachers); $i++) {
+                  ?>
+                    <div class="settings__setting setting">
+                      <div class="setting__imageBlock">
+                        <?php if($teachers[$i]["Teachers_ID"]>1){
+                          ?>
+                          <button type="button" class="deleteBtn" whatDelete="Delete:<?php echo $teachers[$i]["Teachers_ID"]?>">
+                            <img src="/img/config/admin/trash.png" alt="Видалити" class="deleteBtnImage">
+                          </button>
+                          <?php
+                        } else {
+                          ?>
+                          <img src="/img/config/admin/teachers-icon.png" alt="Вчитель" class="setting__image">
+                          <?php
+                        }?>
+                      </div>
+                      <div class="setting__title">
+                        <input type="text" class="setting__input setting__input_second" minlength="5" maxlength="50" name="TN:<?php echo $teachers[$i]["Teachers_ID"]?>" required value="<?php echo $teachers[$i]["Teachers_Name"]?>" <?php if($i==0){ echo "disabled";}?> placeholder="Введіть П.І.П вчителя">
+                      </div>
+                      <div class="setting__changeBlock">
+                        <input type="text" class="setting__input" minlength="5" maxlength="100" name="TL:<?php echo $teachers[$i]["Teachers_ID"]?>" required value="<?php echo $teachers[$i]["Teachers_Link"]?>" <?php if($i==0){ echo "disabled";} else { echo "placeholder='Введіть посилання вчителя'"; }?>>
+                      </div>
                     </div>
-                  </form>
+                  <?php } ?>
                 </div>
               </div>
             </div>
@@ -265,25 +277,9 @@
                 </h2>
                 <?php $lessons = LESSONS::getAllLessons(); ?>
                 <div class="infoBlock__settings settings">
-                  <?php for ($i=0; $i < count($lessons); $i++) { ?>
-                  <div class="settings__setting setting">
-                    <div class="setting__imageBlock"><img src="/img/config/admin/literature.png" alt="Предмет" class="setting__image"></div>
-                    <div class="setting__title">Предмет</div>
-                    <div class="setting__changeBlock">
-                      <input type="text" class="setting__input" maxlength="50" required name="Lesson:<?php echo $lessons[$i]["Lessons_ID"]?>" value="<?php echo $lessons[$i]["Lessons_Name"]?>" placeholder="Введіть назву предмету">
-                    </div>
-                  </div>
-                  <?php } ?>
-                  <div class="settings__setting setting addInputBlock">
-                    <div class="setting__imageBlock"><img src="/img/config/admin/literature.png" alt="Предмет" class="setting__image"></div>
-                    <div class="setting__title">Предмет</div>
-                    <div class="setting__changeBlock">
-                      <input type="text" class="setting__input" maxlength="50" required name="AddLesson" value="" placeholder="Введіть назву предмету">
-                    </div>
-                  </div>
-                  <form class="settings__setting setting <?php if(isset($_GET["view"])&&$_GET["view"]=="lessons"){ echo "setting_visible"; }?>" method="POST">
+                  <form class="settings__setting setting setting_noBack <?php if(isset($_GET["view"])&&$_GET["view"]=="lessons"){ echo "setting_visible"; }?>" method="POST">
                     <input type="hidden" name="Section" value="Lessons">
-                    <input type="hidden" name="Lessons" value="<?php echo count($lessons)?>">
+                    <input type="hidden" name="Lessons" value="<?php echo LESSONS::getMaxIDLessons();?>">
                     <div class="setting__buttons">
                       <button class="setting__addBtn button" type="button">
                         <img src="/img/config/plus.png" class="btnImage" alt="Плюс">
@@ -292,6 +288,26 @@
                       <button class="setting__submitBtn button">Зберегти зміни</button>
                     </div>
                   </form>
+                  <div class="settings__setting setting addInputBlock">
+                    <div class="setting__imageBlock"><img src="/img/config/admin/literature.png" alt="Предмет" class="setting__image"></div>
+                    <div class="setting__title">Предмет</div>
+                    <div class="setting__changeBlock">
+                      <input type="text" class="setting__input" maxlength="50" required name="AddLesson" value="" placeholder="Введіть назву предмету">
+                    </div>
+                  </div>
+                  <?php for ($i=0; $i < count($lessons); $i++) { ?>
+                  <div class="settings__setting setting">
+                    <div class="setting__imageBlock">
+                      <button type="button" class="deleteBtn" whatDelete="Delete:<?php echo $lessons[$i]["Lessons_ID"]?>">
+                        <img src="/img/config/admin/trash.png" alt="Видалити" class="deleteBtnImage">
+                      </button>
+                    </div>
+                    <div class="setting__title">Предмет</div>
+                    <div class="setting__changeBlock">
+                      <input type="text" class="setting__input" maxlength="50" required name="Lesson:<?php echo $lessons[$i]["Lessons_ID"]?>" value="<?php echo $lessons[$i]["Lessons_Name"]?>" placeholder="Введіть назву предмету">
+                    </div>
+                  </div>
+                  <?php } ?>
                 </div>
               </div>
             </div>
@@ -329,7 +345,7 @@
                     </div>
                   </div>
                   <?php } ?>
-                  <form class="settings__setting setting <?php if(isset($_GET["view"])&&$_GET["view"]=="schedule"){ echo "setting_visible"; }?>" method="POST">
+                  <form class="settings__setting setting setting_noBack <?php if(isset($_GET["view"])&&$_GET["view"]=="schedule"){ echo "setting_visible"; }?>" method="POST">
                     <input type="hidden" name="Section" value="Schedule">
                     <input type="hidden" name="Schedule" value="<?php echo count($schedule)?>">
                     <div class="setting__buttons">
@@ -366,7 +382,6 @@
                     </div>
                   </div>
                   <?php } ?>
-                  <div class="settings__setting setting"></div>
                 </div>
               </div>
             </div>
@@ -383,22 +398,17 @@
                 </h2>
                 <?php $codes = CODES::getAllFormatedCodes(); ?>
                 <div class="infoBlock__settings settings">
-                  <?php 
-                  for ($i=0; $i < count($codes); $i++) {
-                    if($codes[$i]["Codes_ClassName"]=="Адмін Панель"){
-                      continue;
-                    }
-                  ?>
-                  <div class="settings__setting setting">
-                    <div class="setting__imageBlock"><img src="/img/config/admin/binary-code-small.png" alt="Код доступу" class="setting__image"></div>
-                    <div class="setting__title">
-                    <input type="text" class="setting__input setting__input_second" maxlength="9" required name="ClassName:<?php echo $codes[$i]["Codes_ID"]?>" value="<?php echo $codes[$i]["Codes_ClassName"]?>" placeholder="Введіть назву класу">
+                  <form class="settings__setting setting setting_noBack <?php if(isset($_GET["view"])&&$_GET["view"]=="codes"){ echo "setting_visible"; }?>" method="POST">
+                    <input type="hidden" name="Section" value="Codes">
+                    <input type="hidden" name="Codes" value="<?php echo CODES::getMaxID(); ?>">
+                    <div class="setting__buttons">
+                      <button class="setting__addBtn button" type="button">
+                        <img src="/img/config/plus.png" class="btnImage" alt="Плюс">
+                        Додати код доступу
+                      </button>
+                      <button class="setting__submitBtn button">Зберегти зміни</button>
                     </div>
-                    <div class="setting__changeBlock">
-                      <input type="text" class="setting__input setting__input_numbers" maxlength="5" required name="Code:<?php echo $codes[$i]["Codes_ID"]?>" value="<?php echo $codes[$i]["Codes_Code"]?>" placeholder="Введіть код доступу класу">
-                    </div>
-                  </div>
-                  <?php } ?>
+                  </form>
                   <div class="settings__setting setting addInputBlock">
                     <div class="setting__imageBlock"><img src="/img/config/admin/binary-code-small.png" alt="Код доступу" class="setting__image"></div>
                     <div class="setting__title">
@@ -408,17 +418,26 @@
                       <input type="text" class="setting__input setting__input_numbers" maxlength="5" required name="AddCode" value="" placeholder="Введіть код доступу класу">
                     </div>
                   </div>
-                  <form class="settings__setting setting <?php if(isset($_GET["view"])&&$_GET["view"]=="codes"){ echo "setting_visible"; }?>" method="POST">
-                    <input type="hidden" name="Section" value="Codes">
-                    <input type="hidden" name="Codes" value="<?php echo count($codes)?>">
-                    <div class="setting__buttons">
-                      <button class="setting__addBtn button" type="button">
-                        <img src="/img/config/plus.png" class="btnImage" alt="Плюс">
-                        Додати код доступу
+                  <?php 
+                  for ($i=0; $i < count($codes); $i++) {
+                    if($codes[$i]["Codes_ClassName"]=="Адмін Панель"){
+                      continue;
+                    }
+                  ?>
+                  <div class="settings__setting setting">
+                    <div class="setting__imageBlock">
+                      <button type="button" class="deleteBtn" whatDelete="Delete:<?php echo $codes[$i]["Codes_ID"]?>">
+                        <img src="/img/config/admin/trash.png" alt="Видалити" class="deleteBtnImage">
                       </button>
-                      <button class="setting__submitBtn button">Зберегти зміни</button>
                     </div>
-                  </form>
+                    <div class="setting__title">
+                    <input type="text" class="setting__input setting__input_second" maxlength="9" required name="ClassName:<?php echo $codes[$i]["Codes_ID"]?>" value="<?php echo $codes[$i]["Codes_ClassName"]?>" placeholder="Введіть назву класу">
+                    </div>
+                    <div class="setting__changeBlock">
+                      <input type="text" class="setting__input setting__input_numbers" maxlength="5" required name="Code:<?php echo $codes[$i]["Codes_ID"]?>" value="<?php echo $codes[$i]["Codes_Code"]?>" placeholder="Введіть код доступу класу">
+                    </div>
+                  </div>
+                  <?php } ?>
                 </div>
               </div>
             </div>
@@ -468,7 +487,6 @@
                       <a href="/view/admin/scheduleLessonsClassSchedule/<?php echo $_GET["class"]?>/5" class="setting__button">П'ЯТНИЦЯ</a>
                     </div>
                   </div>
-                  <div class="settings__setting setting"></div>
                 </div>
               </div>
             </div>
@@ -584,8 +602,8 @@
                       } 
                   ?>
                   </div>
-                  <div class="settings__setting setting">
-                  <div class="setting__buttons">
+                  <div class="settings__setting setting setting_noBack">
+                    <div class="setting__buttons">
                       <button class="setting__submitBtn button" type="submit">Зберегти зміни</button>
                     </div>
                   </div>

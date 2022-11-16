@@ -8,6 +8,13 @@
 			$stmt->execute();
 			return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 		}
+		public static function getAllScheduleLessons(){
+			$mysqli = DATABASE::Connect();
+			$sql = "SELECT * FROM `zozzso-online-study_schedulelessons`";
+			$stmt = $mysqli->prepare($sql);
+			$stmt->execute();
+			return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+		}
 		public static function getLessonsViaCodeAndDay($code,$day){
 			$classID = CODES::getClassIDViaCode($code);
 
@@ -52,6 +59,20 @@
 				return [];
 			}
 		}
+		public static function getMaxIDLessons(){
+			$mysqli = DATABASE::Connect();
+			$sql = "SELECT MAX(`Lessons_ID`) FROM `zozzso-online-study_lessons`";
+			$stmt = $mysqli->prepare($sql);
+			$stmt->execute();
+			return $stmt->get_result()->fetch_all(MYSQLI_ASSOC)[0]["MAX(`Lessons_ID`)"];
+		}
+		public static function getMaxIDScheduleLessons(){
+			$mysqli = DATABASE::Connect();
+			$sql = "SELECT MAX(`ScheduleLessons_ID`) FROM `zozzso-online-study_schedulelessons`";
+			$stmt = $mysqli->prepare($sql);
+			$stmt->execute();
+			return $stmt->get_result()->fetch_all(MYSQLI_ASSOC)[0]["MAX(`ScheduleLessons_ID`)"];
+		}
 		public static function saveChangesLessons($post){
 			if(count($post)>2){
 				$mysqli = DATABASE::Connect();
@@ -78,6 +99,34 @@
 						$stmt = $mysqli->prepare($sql);
 						$stmt->bind_param("s", $lessonName);
 						$stmt->execute();
+					}
+					if(isset($post["Delete:".$i])){
+						$sql = "DELETE FROM `zozzso-online-study_lessons` WHERE `zozzso-online-study_lessons`.`Lessons_ID` = ?"; 
+						$stmt = $mysqli->prepare($sql);
+						$stmt->bind_param("i", $post["Delete:".$i]);
+						$stmt->execute();
+
+						$scheduleLessons = self::getAllScheduleLessons();
+
+						for ($s=0; $s < count($scheduleLessons); $s++) { 
+							$lessons = explode(",",$scheduleLessons[$s]["ScheduleLessons_LessonID"]);
+							$teachers = explode(",",$scheduleLessons[$s]["ScheduleLessons_TeacherID"]);
+							if(($lessons[0]==$post["Delete:".$i]&&intval($lessons[1])==0)||($lessons[0]==$post["Delete:".$i]&&$lessons[1]==$post["Delete:".$i])){
+								$ID = $scheduleLessons[$s]["ScheduleLessons_ID"];
+								$sql = "DELETE FROM `zozzso-online-study_schedulelessons` WHERE `zozzso-online-study_schedulelessons`.`ScheduleLessons_ID` = ?"; 
+								$stmt = $mysqli->prepare($sql);
+								$stmt->bind_param("i", $ID);
+								$stmt->execute();
+							} else if($lessons[1]==$post["Delete:".$i]){
+								$ID = $scheduleLessons[$s]["ScheduleLessons_ID"];
+								$newLessonsValue = $lessons[0].",0";
+								$newTeachersValue = $teachers[0].",".$teachers[1].",0,0";
+								$sql = "UPDATE `zozzso-online-study_schedulelessons` SET `ScheduleLessons_LessonID` = ?, `ScheduleLessons_TeacherID` = ? WHERE `zozzso-online-study_schedulelessons`.`ScheduleLessons_ID` = ?"; 
+								$stmt = $mysqli->prepare($sql);
+								$stmt->bind_param("ssi", $newLessonsValue, $newTeachersValue, $ID);
+								$stmt->execute();
+							}
+						}
 					}
 				}
 			}
