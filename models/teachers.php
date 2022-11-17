@@ -43,10 +43,10 @@
 					}
 
 					if(isset($post["Delete:".$i])){
-						// $sql = "DELETE FROM `zozzso-online-study_teachers` WHERE `zozzso-online-study_teachers`.`Teachers_ID` = ?"; 
-						// $stmt = $mysqli->prepare($sql);
-						// $stmt->bind_param("i", $post["Delete:".$i]);
-						// $stmt->execute();
+						$sql = "DELETE FROM `zozzso-online-study_teachers` WHERE `zozzso-online-study_teachers`.`Teachers_ID` = ?"; 
+						$stmt = $mysqli->prepare($sql);
+						$stmt->bind_param("i", $post["Delete:".$i]);
+						$stmt->execute();
 
 						$scheduleLessons = LESSONS::getAllScheduleLessons();
 
