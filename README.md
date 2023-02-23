@@ -2,11 +2,11 @@
 
 ### About <br/>
 
-A website was created for online study. <br/>
+The website was created for online study to make learning easy, convenient, and accessible to everyone, everywhere. With user-friendly interface, you can learn from the comfort of your home, and on any device. Join our community of lifelong students today and start your learning journey with us!
 
 The website was created by Serhiy Paziuk and upgraded by [Bohdan Grihorak](https://github.com/Grihorak-Bogdan) and Dionisii Shtefanitsa.<br/>
 
-### Website : http://zozrozklad.zzz.com.ua <br/>
+### Link to the website you can find [here](https://github.com/PAZIUK/PAZIUK/blob/main/README.md#my-projects)<br/>
 
 ## For creating were used <br/>
 
