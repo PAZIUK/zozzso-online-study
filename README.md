@@ -6,7 +6,7 @@ The website was created for online study to make learning easy, convenient, and 
 
 The website was created by Serhiy Paziuk and upgraded by [Bohdan Grihorak](https://github.com/Grihorak-Bogdan) and Dionisii Shtefanitsa.<br/>
 
-### Link to the website you can find [here](https://github.com/PAZIUK/PAZIUK/blob/main/README.md#my-projects)<br/>
+### Link to the website you can find [here](https://github.com/PAZIUK#-websites)<br/>
 
 ## For creating were used <br/>
 
